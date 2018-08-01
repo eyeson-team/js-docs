@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Introductions on eyeson JavaScript Library</title>
+    <link>https://eyeson-team.github.io/js-docs/introduction/</link>
+    <description>Recent content in Introductions on eyeson JavaScript Library</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>eyeson GmbH</copyright>
+    <lastBuildDate>Fri, 04 Aug 2017 16:19:03 +0200</lastBuildDate>
+    
+	<atom:link href="https://eyeson-team.github.io/js-docs/introduction/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Introduction</title>
+      <link>https://eyeson-team.github.io/js-docs/introduction/</link>
+      <pubDate>Fri, 04 Aug 2017 16:19:03 +0200</pubDate>
+      
+      <guid>https://eyeson-team.github.io/js-docs/introduction/</guid>
+      <description>A JavaScript library to easily connect to video meetings in modern browsers.
+ Simple but powerful: All you need is an access key. The high level abstraction allows easy control of video and audio streams, chat, screen capturing, broadcasting, media integration, document presentation and hardware device handling. Lightweight: Besides offering a simple interface for managing complex workflows, eyeson has only few external dependencies. This keeps the size and potential compatibility risks small.</description>
+    </item>
+    
+  </channel>
+</rss>

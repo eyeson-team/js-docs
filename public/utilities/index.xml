@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Utilities on eyeson JavaScript Library</title>
+    <link>https://eyeson-team.github.io/js-docs/utilities/</link>
+    <description>Recent content in Utilities on eyeson JavaScript Library</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>eyeson GmbH</copyright>
+    <lastBuildDate>Tue, 08 Aug 2017 12:18:31 +0200</lastBuildDate>
+    
+	<atom:link href="https://eyeson-team.github.io/js-docs/utilities/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Utilities</title>
+      <link>https://eyeson-team.github.io/js-docs/utilities/</link>
+      <pubDate>Tue, 08 Aug 2017 12:18:31 +0200</pubDate>
+      
+      <guid>https://eyeson-team.github.io/js-docs/utilities/</guid>
+      <description>Use eyeson js library additional helpers and utilities to minimize the work needed to setup your own video conferencing interface.
+Logger Collect and manage development, debug, and error messages in one place.
+eyeson.Logger.error(msg); // output error eyeson.Logger.warn(msg); // output warning eyeson.Logger.log(msg); // output log eyeson.Logger.debug(msg); // output debug  Device Manager Manage audio and video device settings like a boss.
+const deviceManager = new eyeson.DeviceManager(); deviceManager.onChange(function(event) { // changeHandler event.</description>
+    </item>
+    
+  </channel>
+</rss>
