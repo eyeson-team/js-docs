@@ -9,8 +9,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>eyeson JavaScript Library</title>
-    <meta name="generator" content="Hugo 0.31.1" />
+    <title>eyeson JS Library</title>
+    <meta name="generator" content="Hugo 0.49" />
 
     
     <meta name="description" content="eyeson JavaScript Library">
@@ -102,7 +102,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        eyeson JavaScript Library
+        eyeson JS Library
       </div>
     </div>
 
@@ -189,9 +189,9 @@
 
 
 
-<a  title="Introduction" href="https://eyeson-team.github.io/js-docs/introduction/">
+<a  title="eyeson JavaScript Library" href="https://eyeson-team.github.io/js-docs/">
 	
-	Introduction
+	eyeson JavaScript Library
 </a>
 
 
@@ -254,24 +254,6 @@
 </li>
 
 
-
-<li>
-  
-    
-
-
-
-<a  title="eyeson JavaScript Library" href="https://eyeson-team.github.io/js-docs/">
-	
-	eyeson JavaScript Library
-</a>
-
-
-
-  
-</li>
-
-
         </ul>
         
 
@@ -315,30 +297,59 @@
 	<article class="article">
 		<div class="wrapper">
 			
-				<h1>eyeson JavaScript Library Documentation </h1>
+				<h1>eyeson JS Library </h1>
 
-				<p>The eyeson JavaScript library provides a well defined interface to communicate
-with the eyeson room service API in order to fully control eyeson video
-conference sessions.</p>
+				<p>This library provides a convenient interface between your browser and the eyeson
+API and is used at <a href="https://eyeson.team/" title="eyeson Team Video Meetings">eyeson.team</a>.</p>
 
-<p>Visit the <a href="introduction/">introduction</a> section to see how you can start
-your first own video conference with just a few lines of JavaScript.</p>
+<ul>
+<li><strong>Simple and powerful</strong>: All you need is an access key. The high level
+abstractions allow easy control of video and audio streams, chat, screen
+capturing, broadcasting, media integration, document presentation and
+hardware device handling.</li>
+<li><strong>Lightweight</strong>: Besides offering a simple interface for managing complex
+workflows, eyeson has only few external dependencies. This keeps the size and
+potential compatibility issues small.</li>
+<li><strong>Event Driven</strong>: After creating a session, you have full control over how to
+respond to any events occurring during the session. With a convention based
+action system you can easily customize the experience for your users.
+Depending on your needs, events may be handled in individual interface
+components or managed by a state-drive approach.</li>
+<li><strong>Framework Agnostic</strong>: Using this event driven system, eyeson is seamlessly
+integrated with other JavaScript libraries and frameworks like Vue, React,
+Angular, or Elm, with or without using additional event handling libraries
+like Redux or RxJS.</li>
+</ul>
 
-<p>The <a href="overview/">overview</a> and <a href="events/">events</a> sections guide you through
-deeper constructs and usage, providing a reference on handling the full feature
-set of an eyeson room.</p>
+<p>You can start your own video conferencing app with a few lines of JavaScript:</p>
 
-<p>To build an interface for controlling media interaction with audio and video we
-provide several tools that can come in handy, like a sound meter that provides
-current volume level of microphone input, a device manager, screen capture
-session handler, and many others - to be found in the <a href="utilities/">utilities</a>
-section.</p>
+<pre><code class="language-js">eyeson.onEvent(event =&gt; {
+  if (event.type !== &quot;accept&quot;) {
+    return;
+  }
+  let video = document.querySelector(&quot;video&quot;);
+  video.srcObject = event.remoteStream;
+  video.play();
+});
+eyeson.start(&quot;&lt;access-key&gt;&quot;);
+</code></pre>
 
-<p>We use this library to run and extend <a href="https://eyeson.team/" title="eyeson Team Video Meetings">eyeson.team</a>, as well as any
-integrations. If you need any further information not to be found in the
-documentation or you are not sure the eyeson services will fit your needs,
-leave us a <a href="mailto:developers@eyeson.team">message</a> or <a href="https://github.com/eyeson-team/eyeson-js/issues">GitHub issue</a>, we&rsquo;re
-always up for a challenge.</p>
+<p>Visit the <a href="overview/">overview</a> section of this guide to familiarize yourself
+with some general concepts of the library.</p>
+
+<p>The <a href="events/">events</a> section is a handy reference of all events the library
+exposes during a conference session.</p>
+
+<p>Building a web UI for video conferencing can be quite challenging. To ease
+the process, we provide a couple of tools which might be useful to you. For
+example a sound meter which provides the current volume level of the microphone,
+a device manager, screen capture helpers and many more. Head over to
+<a href="utilities/">utilities</a>.</p>
+
+<p>If you have a question that&rsquo;s not answered in the documentation or you&rsquo;re not
+sure the eyeson services will fit your particular needs, shoot us a
+<a href="mailto:developers@eyeson.team">message</a> or open a <a href="https://github.com/eyeson-team/eyeson-js/issues">GitHub issue</a>. We&rsquo;re happy
+to help.</p>
 
 			
 

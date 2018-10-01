@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>Events - eyeson JavaScript Library</title>
-    <meta name="generator" content="Hugo 0.31.1" />
+    <meta name="generator" content="Hugo 0.49" />
 
     
     <meta name="description" content="eyeson JavaScript Library">
@@ -186,9 +186,9 @@
 
 
 
-<a  title="Introduction" href="https://eyeson-team.github.io/js-docs/introduction/">
+<a  title="eyeson JavaScript Library" href="https://eyeson-team.github.io/js-docs/">
 	
-	Introduction
+	eyeson JavaScript Library
 </a>
 
 
@@ -246,24 +246,6 @@
 <a  title="Utilities" href="https://eyeson-team.github.io/js-docs/utilities/">
 	
 	Utilities
-</a>
-
-
-
-  
-</li>
-
-
-
-<li>
-  
-    
-
-
-
-<a  title="eyeson JavaScript Library" href="https://eyeson-team.github.io/js-docs/">
-	
-	eyeson JavaScript Library
 </a>
 
 
@@ -466,22 +448,29 @@ restore on reconnect.</p>
 }
 </code></pre>
 
-<h3 id="source-update">source_update</h3>
+<h3 id="podium">podium</h3>
 
 <p>A user has muted the camera, left the room or started a screen capture session.
 Every connected source, video source indexes and an optional presenter source
 index are provided.</p>
 
 <pre><code>{
-  type: 'source_update',
-  psrc, // presenter source index
-  src   // user sources
+  type: 'podium',
+  sfu: true | false,                 // selective forwarding is enabled
+  solo: true | false,                // client is the only participant
+  audio: true | false,               // client participates with audio (is &quot;hearable&quot;)
+  video: true | false,               // client participates with video (is &quot;visible&quot;)
+  media: true | false,               // source list includes media (e.g. gifs or video files)
+  sources: sources,                  // list of source ids
+  isSource: true | false,            // client is a source
+  isPresenter: true | false,         // client is presenter
+  presentation: true | false,        // a participant is presenting
+  videoSources: videoSources,        // list of video sources
+  hasVideoSources: true | false,     // session has video sources
+  hasDesktopSources: true | false,   // session has desktop sources
+  forwardedVideoMuted: true | false  // forwarded video (sfu) is muted
 }
 </code></pre>
-
-<p>Use the indexes on the sources to extract the corresponding user
-identifications, e.g. find the current presenter by using
-<code>data.src[data.psrc]</code>.</p>
 
 <h2 id="chat">Chat</h2>
 
@@ -915,22 +904,6 @@ options.</p>
   </div>
 
   <div class="next">
-  
-      <a href="https://eyeson-team.github.io/js-docs/introduction/" title="Introduction">
-        <span class="direction">
-          Next
-        </span>
-        <div class="page">
-          <div class="stretch">
-            <div class="title">
-              Introduction
-            </div>
-          </div>
-          <div class="button button-next" role="button" aria-label="Next">
-            <i class="icon icon-forward"></i>
-          </div>
-        </div>
-      </a>
   
   </div>
 </nav>
