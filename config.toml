@@ -50,11 +50,6 @@ googleAnalytics = ""
 	weight = 1
 
 [[menu.main]]
-	name   = "Introduction"
-	url    = "introduction/"
-	weight = 10
-
-[[menu.main]]
 	name   = "Overview"
 	url    = "overview/"
 	weight = 20
