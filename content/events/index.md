@@ -158,7 +158,7 @@ A user has reconnected, received after [disconnect](#disconnect).
 }
 ```
 
-### source\_update
+### podium
 
 A user has muted the camera, left the room or started a screen capture session.
 Every connected source, video source indexes and an optional presenter source
@@ -166,15 +166,22 @@ index are provided.
 
 ```
 {
-  type: 'source_update',
-  psrc, // presenter source index
-  src   // user sources
+  type: 'podium',
+  sfu: true | false,                 // selective forwarding is enabled
+  solo: true | false,                // client is the only participant
+  audio: true | false,               // client participates with audio (is "hearable")
+  video: true | false,               // client participates with video (is "visible")
+  media: true | false,               // source list includes media (e.g. gifs or video files)
+  sources: sources,                  // list of source ids
+  isSource: true | false,            // client is a source
+  isPresenter: true | false,         // client is presenter
+  presentation: true | false,        // a participant is presenting
+  videoSources: videoSources,        // list of video sources
+  hasVideoSources: true | false,     // session has video sources
+  hasDesktopSources: true | false,   // session has desktop sources
+  forwardedVideoMuted: true | false  // forwarded video (sfu) is muted
 }
 ```
-
-Use the indexes on the sources to extract the corresponding user
-identifications, e.g. find the current presenter by using
-`data.src[data.psrc]`.
 
 ## Chat
 

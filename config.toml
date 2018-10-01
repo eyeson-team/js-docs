@@ -47,12 +47,7 @@ googleAnalytics = ""
 [[menu.main]]
 	name   = "eyeson JavaScript Library"
 	url    = "/"
-	weight = 0
-
-[[menu.main]]
-	name   = "Introduction"
-	url    = "introduction/"
-	weight = 10
+	weight = 1
 
 [[menu.main]]
 	name   = "Overview"
