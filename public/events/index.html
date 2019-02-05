@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>Events - eyeson JavaScript Library</title>
-    <meta name="generator" content="Hugo 0.49" />
+    <meta name="generator" content="Hugo 0.53" />
 
     
     <meta name="description" content="eyeson JavaScript Library">
@@ -464,7 +464,7 @@ index are provided.</p>
   sources: sources,                  // list of source ids
   isSource: true | false,            // client is a source
   isPresenter: true | false,         // client is presenter
-  presentation: true | false,        // a participant is presenting
+  hasPresenter: true | false,        // a participant is presenting
   videoSources: videoSources,        // list of video sources
   hasVideoSources: true | false,     // session has video sources
   hasDesktopSources: true | false,   // session has desktop sources
@@ -536,91 +536,11 @@ for many applications.</p>
 }
 </code></pre>
 
-<h2 id="presentation-and-documents">Presentation and Documents</h2>
-
-<h3 id="slide">slide</h3>
-
-<p>Receive the document slide currently presented.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'slide',
-  content // url to slide
-}
-</code></pre>
-
-<h3 id="present">present</h3>
-
-<p>Send the document slide to be presented.</p>
-
-<pre><code class="language-JavaScript">eyeson.send({
-  type: 'present',
-  slide // any url to a PNG document to be shown
-});
-</code></pre>
-
-<div class="admonition warning">
-<p class="admonition-title">Ensure proper image size</p>
-<p>The video size for an eyeson room video is <strong>1280 x 960</strong>. Ensure your images
-have the same size to be shown without loss in the video.</p>
-</div>
-
 <h3 id="stop-presenting">stop_presenting</h3>
 
 <p>Stop a presentation.</p>
 
 <pre><code class="language-JavaScript">eyeson.send({ type: 'stop_presenting' };
-</code></pre>
-
-<h3 id="upload-file">upload_file</h3>
-
-<p>Send a file to eyeson document storage, allowed file types are
-<code>application/pdf</code>, <code>image/png</code> and <code>image/jpeg</code>. PDF documents will be
-automatically converted to extract single pages as images for smooth
-presentations. The filesize limit is 5MB for PNG and 2MB for JPEG images.</p>
-
-<pre><code class="language-JavaScript">eyeson.send({ type: 'upload_file', file });
-</code></pre>
-
-<h3 id="files-update">files_update</h3>
-
-<p>After uploading a document to the eyeson file service you will receive file
-update events providing you with conversion progress information and links to
-generated thumbnails as well as single page slide images.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'files_update',
-  files: [
-    {
-      id,
-      name, // file name
-      type, // file type
-      converted: true | false,
-      conversion_progress, // float from 0 to 1
-      failed: true | false,
-      links: {
-        self,
-        slides: [], // sorted list of slide urls
-        thumbnails: [], // sorted list of thumbnail urls
-        download, // file direct download url
-      }
-    }
-  ]
-}
-</code></pre>
-
-<h3 id="load-files">load_files</h3>
-
-<p>Request a update of the file list. This will trigger a <code>files_update</code> event
-when a response is received.</p>
-
-<pre><code class="language-JavaScript">eyeson.send({ type: 'load_files' });
-</code></pre>
-
-<h3 id="delete-file">delete_file</h3>
-
-<p>Delete a file.</p>
-
-<pre><code class="language-JavaScript">eyeson.send({ type: 'delete_file', file });
 </code></pre>
 
 <h2 id="recording">Recording</h2>
@@ -871,7 +791,7 @@ options.</p>
 
 			<aside class="copyright" role="note">
 				
-				&copy; 2018 eyeson GmbH &ndash;
+				&copy; 2019 eyeson GmbH &ndash;
 				
 				Documentation built with
 				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
