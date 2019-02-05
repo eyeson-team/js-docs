@@ -175,7 +175,7 @@ index are provided.
   sources: sources,                  // list of source ids
   isSource: true | false,            // client is a source
   isPresenter: true | false,         // client is presenter
-  presentation: true | false,        // a participant is presenting
+  hasPresenter: true | false,        // a participant is presenting
   videoSources: videoSources,        // list of video sources
   hasVideoSources: true | false,     // session has video sources
   hasDesktopSources: true | false,   // session has desktop sources
@@ -251,35 +251,6 @@ A user has left the eyeson room.
 }
 ```
 
-## Presentation and Documents
-
-### slide
-
-Receive the document slide currently presented.
-
-```JavaScript
-{
-  type: 'slide',
-  content // url to slide
-}
-```
-
-### present
-
-Send the document slide to be presented.
-
-```JavaScript
-eyeson.send({
-  type: 'present',
-  slide // any url to a PNG document to be shown
-});
-```
-
-{{< warning title="Ensure proper image size" >}}
-The video size for an eyeson room video is **1280 x 960**. Ensure your images
-have the same size to be shown without loss in the video.
-{{< /warning >}}
-
 ### stop\_presenting
 
 Stop a presentation.
@@ -287,63 +258,6 @@ Stop a presentation.
 ```JavaScript
 eyeson.send({ type: 'stop_presenting' };
 ```
-
-### upload\_file
-
-Send a file to eyeson document storage, allowed file types are
-`application/pdf`, `image/png` and `image/jpeg`. PDF documents will be
-automatically converted to extract single pages as images for smooth
-presentations. The filesize limit is 5MB for PNG and 2MB for JPEG images.
-
-```JavaScript
-eyeson.send({ type: 'upload_file', file });
-```
-
-### files\_update
-
-After uploading a document to the eyeson file service you will receive file
-update events providing you with conversion progress information and links to
-generated thumbnails as well as single page slide images.
-
-```JavaScript
-{
-  type: 'files_update',
-  files: [
-    {
-      id,
-      name, // file name
-      type, // file type
-      converted: true | false,
-      conversion_progress, // float from 0 to 1
-      failed: true | false,
-      links: {
-        self,
-        slides: [], // sorted list of slide urls
-        thumbnails: [], // sorted list of thumbnail urls
-        download, // file direct download url
-      }
-    }
-  ]
-}
-```
-
-### load\_files
-
-Request a update of the file list. This will trigger a `files_update` event
-when a response is received.
-
-```JavaScript
-eyeson.send({ type: 'load_files' });
-```
-
-### delete\_file
-
-Delete a file.
-
-```JavaScript
-eyeson.send({ type: 'delete_file', file });
-```
-
 
 ## Recording
 
