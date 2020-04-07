@@ -522,3 +522,15 @@ Update a stream e.g. to toggle audio/video.
 }
 ```
 
+### toggle\_camera
+
+Update the cameras facing mode on mobile devices.
+
+```JavaScript
+{
+  type: 'toggle_camera',
+  stream: localStream,
+  facingMode: 'user' | 'environment'
+}
+```
+
