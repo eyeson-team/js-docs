@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>Events - eyeson JavaScript Library</title>
-    <meta name="generator" content="Hugo 0.53" />
+    <meta name="generator" content="Hugo 0.59.1" />
 
     
     <meta name="description" content="eyeson JavaScript Library">
@@ -788,10 +788,21 @@ options.</p>
 }
 </code></pre>
 
+<h3 id="toggle-camera">toggle_camera</h3>
+
+<p>Update the cameras facing mode on mobile devices.</p>
+
+<pre><code class="language-JavaScript">{
+  type: 'toggle_camera',
+  stream: localStream,
+  facingMode: 'user' | 'environment'
+}
+</code></pre>
+
 
 			<aside class="copyright" role="note">
 				
-				&copy; 2019 eyeson GmbH &ndash;
+				&copy; 2020 eyeson GmbH &ndash;
 				
 				Documentation built with
 				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
@@ -805,25 +816,25 @@ options.</p>
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
+  </div>
+
+  <div class="next">
+  
       <a href="https://eyeson-team.github.io/js-docs/overview/" title="Overview">
         <span class="direction">
-          Previous
+          Next
         </span>
         <div class="page">
-          <div class="button button-previous" role="button" aria-label="Previous">
-            <i class="icon icon-back"></i>
-          </div>
           <div class="stretch">
             <div class="title">
               Overview
             </div>
           </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
         </div>
       </a>
-  
-  </div>
-
-  <div class="next">
   
   </div>
 </nav>
