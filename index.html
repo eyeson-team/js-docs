@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>eyeson JS Library</title>
-    <meta name="generator" content="Hugo 0.53" />
+    <meta name="generator" content="Hugo 0.59.1" />
 
     
     <meta name="description" content="eyeson JavaScript Library">
@@ -327,6 +327,7 @@ like Redux or RxJS.</li>
   if (event.type !== &quot;accept&quot;) {
     return;
   }
+  // Note: Some iOS devices might require video to have autoplay attribute set.
   let video = document.querySelector(&quot;video&quot;);
   video.srcObject = event.remoteStream;
   video.play();
@@ -355,7 +356,7 @@ to help.</p>
 
 			<aside class="copyright" role="note">
 				
-				&copy; 2019 eyeson GmbH &ndash;
+				&copy; 2020 eyeson GmbH &ndash;
 				
 				Documentation built with
 				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
