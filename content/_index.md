@@ -32,6 +32,7 @@ eyeson.onEvent(event => {
   if (event.type !== "accept") {
     return;
   }
+  // Note: Some iOS devices might require video to have autoplay attribute set.
   let video = document.querySelector("video");
   video.srcObject = event.remoteStream;
   video.play();
