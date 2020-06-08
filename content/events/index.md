@@ -508,13 +508,13 @@ options.
 }
 ```
 
-### update\_stream
+### change\_stream
 
 Update a stream e.g. to toggle audio/video.
 
 ```JavaScript
 {
-  type: 'update_stream',
+  type: 'change_stream',
   options: {
     audio: true | false,
     video: true | false
