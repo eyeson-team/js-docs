@@ -1,6 +1,12 @@
 
-body, .footer, .header, .project, th {
+body, .footer, .header, th {
   background-color: #9e206c !important;
+}
+
+@media only screen and (max-width: 959px) {
+  .project {
+    background-color: #9e206c !important;
+  }
 }
 
 h1, h2, h3, h4, h5 {
