@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>Utilities - eyeson JavaScript Library</title>
-    <meta name="generator" content="Hugo 0.59.1" />
+    <meta name="generator" content="Hugo 0.69.0" />
 
     
     <meta name="description" content="eyeson JavaScript Library">
@@ -298,119 +298,83 @@
 		<div class="wrapper">
 			<h1>Utilities </h1>
 
-			
-
-<p>Use eyeson js library additional helpers and utilities to minimize the work
+			<p>Use eyeson js library additional helpers and utilities to minimize the work
 needed to setup your own video conferencing interface.</p>
-
 <h2 id="logger">Logger</h2>
-
 <p>Collect and manage development, debug, and error messages in one place.</p>
-
-<pre><code class="language-JavaScript">eyeson.Logger.error(msg); // output error
-eyeson.Logger.warn(msg);  // output warning
-eyeson.Logger.log(msg);   // output log
-eyeson.Logger.debug(msg); // output debug
-</code></pre>
-
-<h2 id="device-manager">Device Manager</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">Logger</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">msg</span>); <span style="color:#75715e">// output error
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">Logger</span>.<span style="color:#a6e22e">warn</span>(<span style="color:#a6e22e">msg</span>);  <span style="color:#75715e">// output warning
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">Logger</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">msg</span>);   <span style="color:#75715e">// output log
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">Logger</span>.<span style="color:#a6e22e">debug</span>(<span style="color:#a6e22e">msg</span>); <span style="color:#75715e">// output debug
+</span></code></pre></div><h2 id="device-manager">Device Manager</h2>
 <p>Manage audio and video device settings like a boss.</p>
-
-<pre><code class="language-JavaScript">const deviceManager = new eyeson.DeviceManager();
-deviceManager.onChange(function(event) { // changeHandler
-  event.error; // if set it contains { name, message }, default null
-  event.cameras; // available cameras
-  event.microphones; // available microphones
-  event.speakers; // available speakers
-  event.sinkId; // available sinkId (audio output selection)
-  event.stream; // stream to test devices with
-  event.constraints; // selected media constraints
-  event.options; // selected options
-});
-deviceManager.start(); // start checking device changes
-deviceManager.setVideoInput(camera); // switch camera
-deviceManager.setAudioInput(microphone); // switch microphone
-deviceManager.setAudioOutput(speaker); // switch speaker
-deviceManager.storeConstraints(); // store current selection
-deviceManager.removeListener(changeHandler); // remove listeners if registered via onChange
-deviceManager.stop(); // stop checking device changes
-</code></pre>
-
-<h2 id="feature-detector">Feature Detector</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">deviceManager</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">DeviceManager</span>();
+<span style="color:#a6e22e">deviceManager</span>.<span style="color:#a6e22e">onChange</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">event</span>) { <span style="color:#75715e">// changeHandler
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">error</span>; <span style="color:#75715e">// if set it contains { name, message }, default null
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">cameras</span>; <span style="color:#75715e">// available cameras
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">microphones</span>; <span style="color:#75715e">// available microphones
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">speakers</span>; <span style="color:#75715e">// available speakers
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">sinkId</span>; <span style="color:#75715e">// available sinkId (audio output selection)
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">stream</span>; <span style="color:#75715e">// stream to test devices with
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">constraints</span>; <span style="color:#75715e">// selected media constraints
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">options</span>; <span style="color:#75715e">// selected options
+</span><span style="color:#75715e"></span>});
+<span style="color:#a6e22e">deviceManager</span>.<span style="color:#a6e22e">start</span>(); <span style="color:#75715e">// start checking device changes
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">deviceManager</span>.<span style="color:#a6e22e">setVideoInput</span>(<span style="color:#a6e22e">camera</span>); <span style="color:#75715e">// switch camera
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">deviceManager</span>.<span style="color:#a6e22e">setAudioInput</span>(<span style="color:#a6e22e">microphone</span>); <span style="color:#75715e">// switch microphone
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">deviceManager</span>.<span style="color:#a6e22e">setAudioOutput</span>(<span style="color:#a6e22e">speaker</span>); <span style="color:#75715e">// switch speaker
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">deviceManager</span>.<span style="color:#a6e22e">storeConstraints</span>(); <span style="color:#75715e">// store current selection
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">deviceManager</span>.<span style="color:#a6e22e">removeListener</span>(<span style="color:#a6e22e">changeHandler</span>); <span style="color:#75715e">// remove listeners if registered via onChange
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">deviceManager</span>.<span style="color:#a6e22e">stop</span>(); <span style="color:#75715e">// stop checking device changes
+</span></code></pre></div><h2 id="feature-detector">Feature Detector</h2>
 <p>Detect user agents capabilities in order to provide user friendly
 notifications, messages, and fallbacks instead of relying on browser
 identification techniques.</p>
-
-<pre><code class="language-JavaScript">eyeson.FeatureDetector.canUseEyeson();
-eyeson.FeatureDetector.canScreenCapture();
-eyeson.FeatureDetector.canChangeAudioOutput();
-eyeson.FeatureDetector.isAndroidDevice();
-eyeson.FeatureDetector.isIOSDevice();
-eyeson.FeatureDetector.inIframe();
-eyeson.FeatureDetector.hasMobileApp();
-</code></pre>
-
-<p>The Feature Detector also provides lower level checks that are used in the
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">FeatureDetector</span>.<span style="color:#a6e22e">canUseEyeson</span>();
+<span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">FeatureDetector</span>.<span style="color:#a6e22e">canScreenCapture</span>();
+<span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">FeatureDetector</span>.<span style="color:#a6e22e">canChangeAudioOutput</span>();
+<span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">FeatureDetector</span>.<span style="color:#a6e22e">isAndroidDevice</span>();
+<span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">FeatureDetector</span>.<span style="color:#a6e22e">isIOSDevice</span>();
+<span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">FeatureDetector</span>.<span style="color:#a6e22e">inIframe</span>();
+<span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">FeatureDetector</span>.<span style="color:#a6e22e">hasMobileApp</span>();
+</code></pre></div><p>The Feature Detector also provides lower level checks that are used in the
 library itself or to provide specific advises to an end user. You propably
 won&rsquo;t need them but for the sake of completeness:</p>
-
-<pre><code class="language-JavaScript">eyeson.FeatureDetector.canHandleMediaStreams();
-eyeson.FeatureDetector.canHandlePeerConnection();
-eyeson.FeatureDetector.canHandleIceConnection();
-eyeson.FeatureDetector.canUpdatePeerConnection();
-eyeson.FeatureDetector.hasSenderReceiverSupport();
-eyeson.FeatureDetector.canUseVp8Codec();
-</code></pre>
-
-<h2 id="sound-meter">Sound Meter</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">FeatureDetector</span>.<span style="color:#a6e22e">canHandleMediaStreams</span>();
+<span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">FeatureDetector</span>.<span style="color:#a6e22e">canHandlePeerConnection</span>();
+<span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">FeatureDetector</span>.<span style="color:#a6e22e">canHandleIceConnection</span>();
+<span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">FeatureDetector</span>.<span style="color:#a6e22e">canUpdatePeerConnection</span>();
+<span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">FeatureDetector</span>.<span style="color:#a6e22e">hasSenderReceiverSupport</span>();
+<span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">FeatureDetector</span>.<span style="color:#a6e22e">canUseVp8Codec</span>();
+</code></pre></div><h2 id="sound-meter">Sound Meter</h2>
 <p>Read volumne input level from a media stream.</p>
-
-<pre><code class="language-JavaScript">const soundMeter = eyeson.SoundMeter.new();
-soundMeter
-  .connectToSource(stream) // bind stream, listen for audio
-  .onUpdate(function(event) { // listen on updates
-    event.error, // an error occurred, default: null
-    event.value  // audio level between 0 and 100
-  });
-soundMeter.stop(); // stop checking the stream for audio
-</code></pre>
-
-<h2 id="youtube-api">YouTube API</h2>
-
-<pre><code class="language-JavaScript">const ytApi = new eyeson.YoutubeApi(eyeson);
-// TODO...
-</code></pre>
-
-<h2 id="facebook-api">Facebook API</h2>
-
-<pre><code class="language-JavaScript">const fbApi = new eyeson.FacebookApi(eyeson);
-// TODO...
-</code></pre>
-
-<h2 id="date-helper">Date Helper</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">soundMeter</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">SoundMeter</span>.<span style="color:#66d9ef">new</span>();
+<span style="color:#a6e22e">soundMeter</span>
+  .<span style="color:#a6e22e">connectToSource</span>(<span style="color:#a6e22e">stream</span>) <span style="color:#75715e">// bind stream, listen for audio
+</span><span style="color:#75715e"></span>  .<span style="color:#a6e22e">onUpdate</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">event</span>) { <span style="color:#75715e">// listen on updates
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">error</span>, <span style="color:#75715e">// an error occurred, default: null
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">value</span>  <span style="color:#75715e">// audio level between 0 and 100
+</span><span style="color:#75715e"></span>  });
+<span style="color:#a6e22e">soundMeter</span>.<span style="color:#a6e22e">stop</span>(); <span style="color:#75715e">// stop checking the stream for audio
+</span></code></pre></div><h2 id="youtube-api">YouTube API</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ytApi</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">YoutubeApi</span>(<span style="color:#a6e22e">eyeson</span>);
+<span style="color:#75715e">// TODO...
+</span></code></pre></div><h2 id="facebook-api">Facebook API</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fbApi</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">FacebookApi</span>(<span style="color:#a6e22e">eyeson</span>);
+<span style="color:#75715e">// TODO...
+</span></code></pre></div><h2 id="date-helper">Date Helper</h2>
 <p>Very basic date formatting helpers.</p>
-
-<pre><code class="language-JavaScript">eyeson.date.ensureDate(date); // convert number, string or Date to Date
-eyeson.date.formatDate(date); // format with toLocalDate (with fallback)
-eyeson.date.monthNames; // ['January', ... ]
-eyeson.date.beautifulDate(date); // neat date format, 'November 25th, 2016'
-eyeson.date.formatTime(date); // format with toLocaleTimeString (with fallback)
-</code></pre>
-
-<h2 id="debounce-helper">Debounce Helper</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">date</span>.<span style="color:#a6e22e">ensureDate</span>(<span style="color:#a6e22e">date</span>); <span style="color:#75715e">// convert number, string or Date to Date
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">date</span>.<span style="color:#a6e22e">formatDate</span>(<span style="color:#a6e22e">date</span>); <span style="color:#75715e">// format with toLocalDate (with fallback)
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">date</span>.<span style="color:#a6e22e">monthNames</span>; <span style="color:#75715e">// [&#39;January&#39;, ... ]
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">date</span>.<span style="color:#a6e22e">beautifulDate</span>(<span style="color:#a6e22e">date</span>); <span style="color:#75715e">// neat date format, &#39;November 25th, 2016&#39;
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">date</span>.<span style="color:#a6e22e">formatTime</span>(<span style="color:#a6e22e">date</span>); <span style="color:#75715e">// format with toLocaleTimeString (with fallback)
+</span></code></pre></div><h2 id="debounce-helper">Debounce Helper</h2>
 <p>Efficiently execute a function but not more often than the given wait time (in
 milliseconds) limits to. Use the immediate flag to indicate if the function
 should be executed before or after the wait time.</p>
-
-<pre><code class="language-JavaScript">eyeson.debounce(func, wait, immediate); // debounce function
-</code></pre>
-
-<p>Use this method to enhance performance on several executions. Let&rsquo;s say you
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">debounce</span>(<span style="color:#a6e22e">func</span>, <span style="color:#a6e22e">wait</span>, <span style="color:#a6e22e">immediate</span>); <span style="color:#75715e">// debounce function
+</span></code></pre></div><p>Use this method to enhance performance on several executions. Let&rsquo;s say you
 want to act on a browser window resize, simply listening on the event may
 execute a lot. When wrapping your handler by debounce you may execute it
 only every 100ms, still providing a real-time-feeling for your user but with
