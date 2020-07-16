@@ -7,6 +7,10 @@ canonifyurls = true
 # Enable Google Analytics by entering your tracking id
 googleAnalytics = ""
 
+[markup]
+  [markup.highlight]
+    codeFences = false
+
 [params]
 	# General information
 	author = "eyeson Team"
