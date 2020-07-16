@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>Events - eyeson JavaScript Library</title>
-    <meta name="generator" content="Hugo 0.59.1" />
+    <meta name="generator" content="Hugo 0.69.0" />
 
     
     <meta name="description" content="eyeson JavaScript Library">
@@ -298,162 +298,120 @@
 		<div class="wrapper">
 			<h1>Events </h1>
 
-			
-
-<p>Events are the core data construct provided by the eyeson library. Most
+			<p>Events are the core data construct provided by the eyeson library. Most
 interactions with the room will be processed through events. The identifying
 attribute of an event is its <code>type</code>. <em>When listening for events the most common
 thing you want to do is to respond to an event, commonly distinguished by
 conditionals, a switch statement or a factory.</em></p>
-
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>eyeson js library will handle some additional events for you in order to
 provide a higher level abstraction and for ease of use you will not receive
 those events.</p>
 </div>
-
 <h2 id="connection-and-setup">Connection and Setup</h2>
-
 <h3 id="connection">connection</h3>
-
 <p>Contains update information about your connection status to the eyeson api.</p>
-
-<pre><code class="language-Javascript">{
-  type: 'connection',
-  connectionStatus: 'fetch_room' | 'connected' | 'access_denied'
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;connection&#39;</span>,
+  <span style="color:#a6e22e">connectionStatus</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;fetch_room&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;connected&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;access_denied&#39;</span>
 }
-</code></pre>
-
-<h3 id="room-setup">room_setup</h3>
-
+</code></pre></div><h3 id="room_setup">room_setup</h3>
 <p>Received once the real time channel connection is established. This event
 contains information about the state of the current room.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'room_setup',
-  content: {
-    access_key: 'token-for-room',
-    ready: true | false,
-    room: {
-      id,
-      name,
-      ready: true | false,
-      shutdown: true | false,
-      sip: { /* omitted */ } // sip connection credentials
-      guest_token: 'token-for-guest'
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;room_setup&#39;</span>,
+  <span style="color:#a6e22e">content</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">access_key</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;token-for-room&#39;</span>,
+    <span style="color:#a6e22e">ready</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">false</span>,
+    <span style="color:#a6e22e">room</span><span style="color:#f92672">:</span> {
+      <span style="color:#a6e22e">id</span>,
+      <span style="color:#a6e22e">name</span>,
+      <span style="color:#a6e22e">ready</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">false</span>,
+      <span style="color:#a6e22e">shutdown</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">false</span>,
+      <span style="color:#a6e22e">sip</span><span style="color:#f92672">:</span> { <span style="color:#75715e">/* omitted */</span> } <span style="color:#75715e">// sip connection credentials
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">guest_token</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;token-for-guest&#39;</span>
     },
-    team: {
-      name
+    <span style="color:#a6e22e">team</span><span style="color:#f92672">:</span> {
+      <span style="color:#a6e22e">name</span>
     },
-    user: {
-      id,
-      name,
-      avatar,
-      guest: true | false,
-      ready: true | false,
-      sip: { /* omitted */ } // sip connection credentials
+    <span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> {
+      <span style="color:#a6e22e">id</span>,
+      <span style="color:#a6e22e">name</span>,
+      <span style="color:#a6e22e">avatar</span>,
+      <span style="color:#a6e22e">guest</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">false</span>,
+      <span style="color:#a6e22e">ready</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">false</span>,
+      <span style="color:#a6e22e">sip</span><span style="color:#f92672">:</span> { <span style="color:#75715e">/* omitted */</span> } <span style="color:#75715e">// sip connection credentials
+</span><span style="color:#75715e"></span>    },
+    <span style="color:#a6e22e">links</span><span style="color:#f92672">:</span> {
+      <span style="color:#a6e22e">self</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;https://api.eyeson.team/rooms/token-for-room&#39;</span>,
+      <span style="color:#a6e22e">gui</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;https://app.eyeson.team/?token-for-room&#39;</span>,
+      <span style="color:#a6e22e">guest_join</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;https://app.eyeson.team/?guest=token-for-guest&#39;</span>,
+      <span style="color:#a6e22e">websocket</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;https://api.eyeson.team/rt?access_key=token-for-room&#39;</span>
     },
-    links: {
-      self: 'https://api.eyeson.team/rooms/token-for-room',
-      gui: 'https://app.eyeson.team/?token-for-room',
-      guest_join: 'https://app.eyeson.team/?guest=token-for-guest',
-      websocket: 'https://api.eyeson.team/rt?access_key=token-for-room'
-    },
-    presentation: { /* ... */ },
-    broadcasts: [],
-    recording: null
+    <span style="color:#a6e22e">presentation</span><span style="color:#f92672">:</span> { <span style="color:#75715e">/* ... */</span> },
+    <span style="color:#a6e22e">broadcasts</span><span style="color:#f92672">:</span> [],
+    <span style="color:#a6e22e">recording</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>
   }
 }
-</code></pre>
-
-<div class="admonition note">
+</code></pre></div><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>An eyeson room server and user may not be available on the first request
 therefore there a three status flags included in the response above. Room ready
 and user ready status, as well as the top level ready flag combining those two.</p>
 </div>
-
-<h3 id="room-ready">room_ready</h3>
-
+<h3 id="room_ready">room_ready</h3>
 <p>When you establish a real time connection but the eyeson room isn&rsquo;t ready at
 that point (i.e. <code>room_setup</code> content ready is false) you&rsquo;ll receive this
 separate message once the room is ready.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'room_ready',
-  content: {
-    ready: true,
-    user: { /* ... */ },
-    room: { /* ... */ }
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;room_ready&#39;</span>,
+  <span style="color:#a6e22e">content</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">ready</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+    <span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> { <span style="color:#75715e">/* ... */</span> },
+    <span style="color:#a6e22e">room</span><span style="color:#f92672">:</span> { <span style="color:#75715e">/* ... */</span> }
   }
 }
-</code></pre>
-
-<h3 id="fetch-room">fetch_room</h3>
-
+</code></pre></div><h3 id="fetch_room">fetch_room</h3>
 <p>Fetch the room details, provides the room and user information and is also
 initially received when a room changes its status to <code>ready</code>. The event can be
 send to the eyeson room and will return with same type when a response is
 received.</p>
-
-<pre><code class="language-JavaScript">eyeson.send({ type: 'fetch_room' });
-</code></pre>
-
-<pre><code class="language-JavaScript">{
-  type: 'fetch_room',
-  room: { /* ... */ }
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">send</span>({ <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;fetch_room&#39;</span> });
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;fetch_room&#39;</span>,
+  <span style="color:#a6e22e">room</span><span style="color:#f92672">:</span> { <span style="color:#75715e">/* ... */</span> }
 }
-</code></pre>
-
-<h3 id="accept">accept</h3>
-
+</code></pre></div><h3 id="accept">accept</h3>
 <p>Received once a session for the room has been established.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'accept',
-  stream: MediaStream,     // the remote stream you're receiving
-  localStream: MediaStream // your local stream
-}
-</code></pre>
-
-<h3 id="stream-update">stream_update</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;accept&#39;</span>,
+  <span style="color:#a6e22e">stream</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">MediaStream</span>,     <span style="color:#75715e">// the remote stream you&#39;re receiving
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">localStream</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">MediaStream</span> <span style="color:#75715e">// your local stream
+</span><span style="color:#75715e"></span>}
+</code></pre></div><h3 id="stream_update">stream_update</h3>
 <p>Remote or local stream has been updated and needs to be replaced.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'stream_update',
-  stream: MediaStream,     // new remote stream
-  localStream: MediaStream // new local stream
-}
-</code></pre>
-
-<h3 id="disconnect">disconnect</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;stream_update&#39;</span>,
+  <span style="color:#a6e22e">stream</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">MediaStream</span>,     <span style="color:#75715e">// new remote stream
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">localStream</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">MediaStream</span> <span style="color:#75715e">// new local stream
+</span><span style="color:#75715e"></span>}
+</code></pre></div><h3 id="disconnect">disconnect</h3>
 <p>User has disconnected. If providing a presentation feature you should ensure to
 close any active presentation held by this user, and on demand remember to
 restore on reconnect.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'disconnect'
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;disconnect&#39;</span>
 }
-</code></pre>
-
-<h3 id="reconnect">reconnect</h3>
-
+</code></pre></div><h3 id="reconnect">reconnect</h3>
 <p>A user has reconnected, received after <a href="#disconnect">disconnect</a>.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'reconnect'
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;reconnect&#39;</span>
 }
-</code></pre>
-
-<h3 id="podium">podium</h3>
-
+</code></pre></div><h3 id="podium">podium</h3>
 <p>A user has muted the camera, left the room or started a screen capture session.
 Every connected source, video source indexes and an optional presenter source
 index are provided.</p>
-
 <pre><code>{
   type: 'podium',
   sfu: true | false,                 // selective forwarding is enabled
@@ -470,335 +428,224 @@ index are provided.</p>
   hasDesktopSources: true | false,   // session has desktop sources
   forwardedVideoMuted: true | false  // forwarded video (sfu) is muted
 }
-</code></pre>
-
-<h2 id="chat">Chat</h2>
-
+</code></pre><h2 id="chat">Chat</h2>
 <p>Any meeting provides a temporary real-time chat that can be used and customized
 for many applications.</p>
-
 <h3 id="chat-1">chat</h3>
-
 <p>Receive a chat message.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'chat',
-  user: {
-    name,
-    avatar
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;chat&#39;</span>,
+  <span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">name</span>,
+    <span style="color:#a6e22e">avatar</span>
   }
-  timestamp, // JavaScript Date
-  content
+  <span style="color:#a6e22e">timestamp</span>, <span style="color:#75715e">// JavaScript Date
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">content</span>
 }
-</code></pre>
-
-<h3 id="send-chat">send_chat</h3>
-
+</code></pre></div><h3 id="send_chat">send_chat</h3>
 <p>Send a chat message.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'send_chat',
-  content
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;send_chat&#39;</span>,
+  <span style="color:#a6e22e">content</span>
 }
-</code></pre>
-
-<h2 id="joining-and-leaving-users">Joining and Leaving Users</h2>
-
-<h3 id="add-user">add_user</h3>
-
+</code></pre></div><h2 id="joining-and-leaving-users">Joining and Leaving Users</h2>
+<h3 id="add_user">add_user</h3>
 <p>A new user has joined the eyeson room.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'add_user',
-  user: {
-    id,
-    name,
-    avatar, // url to users avatar
-    guest: true | false
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;add_user&#39;</span>,
+  <span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">id</span>,
+    <span style="color:#a6e22e">name</span>,
+    <span style="color:#a6e22e">avatar</span>, <span style="color:#75715e">// url to users avatar
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">guest</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">false</span>
   }
-  initial: true | false // initial connect or reconnect
-}
-</code></pre>
-
-<h3 id="remove-user">remove_user</h3>
-
+  <span style="color:#a6e22e">initial</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">false</span> <span style="color:#75715e">// initial connect or reconnect
+</span><span style="color:#75715e"></span>}
+</code></pre></div><h3 id="remove_user">remove_user</h3>
 <p>A user has left the eyeson room.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'remove_user',
-  userId,
-  user: {
-    id,
-    name,
-    avatar,
-    guest: true | false
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;remove_user&#39;</span>,
+  <span style="color:#a6e22e">userId</span>,
+  <span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">id</span>,
+    <span style="color:#a6e22e">name</span>,
+    <span style="color:#a6e22e">avatar</span>,
+    <span style="color:#a6e22e">guest</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">false</span>
   }
 }
-</code></pre>
-
-<h3 id="stop-presenting">stop_presenting</h3>
-
+</code></pre></div><h3 id="stop_presenting">stop_presenting</h3>
 <p>Stop a presentation.</p>
-
-<pre><code class="language-JavaScript">eyeson.send({ type: 'stop_presenting' };
-</code></pre>
-
-<h2 id="recording">Recording</h2>
-
-<h3 id="start-recording">start_recording</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">send</span>({ <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;stop_presenting&#39;</span> };
+</code></pre></div><h2 id="recording">Recording</h2>
+<h3 id="start_recording">start_recording</h3>
 <p>Start a recording. The message is delivered to all users.</p>
-
-<pre><code class="language-JavaScript">eyeson.send({
-  type: 'start_recording',
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">send</span>({
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;start_recording&#39;</span>,
 });
-</code></pre>
-
-<pre><code class="language-JavaScript">{
-  type: 'start_recording',
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;start_recording&#39;</span>,
 }
-</code></pre>
-
-<h3 id="stop-recording">stop_recording</h3>
-
+</code></pre></div><h3 id="stop_recording">stop_recording</h3>
 <p>Stop a recording. The message is delivered to all users.</p>
-
-<pre><code class="language-JavaScript">eyeson.send({
-  type: 'stop_recording',
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">send</span>({
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;stop_recording&#39;</span>,
 });
-</code></pre>
-
-<pre><code class="language-JavaScript">{
-  type: 'stop_recording'
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;stop_recording&#39;</span>
 }
-</code></pre>
-
-<h3 id="recording-update">recording_update</h3>
-
+</code></pre></div><h3 id="recording_update">recording_update</h3>
 <p>Received when the rooms recording state is updated.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'recording_update',
-  recording: {
-    id: '598d8812ac605e3e4892470b',
-    created_at, // Timestamp
-    duration, // in seconds
-    links: {
-      self: 'https://api.eyeson.team/recordings/598d8812ac605e3e4892470b',
-      download: null
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;recording_update&#39;</span>,
+  <span style="color:#a6e22e">recording</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;598d8812ac605e3e4892470b&#39;</span>,
+    <span style="color:#a6e22e">created_at</span>, <span style="color:#75715e">// Timestamp
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">duration</span>, <span style="color:#75715e">// in seconds
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">links</span><span style="color:#f92672">:</span> {
+      <span style="color:#a6e22e">self</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;https://api.eyeson.team/recordings/598d8812ac605e3e4892470b&#39;</span>,
+      <span style="color:#a6e22e">download</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>
     },
-    user: {
-      id,
-      name,
-      avatar,
-      guest,
+    <span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> {
+      <span style="color:#a6e22e">id</span>,
+      <span style="color:#a6e22e">name</span>,
+      <span style="color:#a6e22e">avatar</span>,
+      <span style="color:#a6e22e">guest</span>,
     },
-    room: {
-      id,
-      name,
-      ready: true | false,
-      shutdown: true | false,
-      sip: { /* ... */ },
-      guest_token
+    <span style="color:#a6e22e">room</span><span style="color:#f92672">:</span> {
+      <span style="color:#a6e22e">id</span>,
+      <span style="color:#a6e22e">name</span>,
+      <span style="color:#a6e22e">ready</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">false</span>,
+      <span style="color:#a6e22e">shutdown</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">false</span>,
+      <span style="color:#a6e22e">sip</span><span style="color:#f92672">:</span> { <span style="color:#75715e">/* ... */</span> },
+      <span style="color:#a6e22e">guest_token</span>
     }
   }
 }
-</code></pre>
-
-<h2 id="broadcast">Broadcast</h2>
-
-<h3 id="publish-broadcast">publish_broadcast</h3>
-
+</code></pre></div><h2 id="broadcast">Broadcast</h2>
+<h3 id="publish_broadcast">publish_broadcast</h3>
 <p>Received after a broadcast has been published to the streaming platform.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'publish_broadcast',
-  playerUrl
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;publish_broadcast&#39;</span>,
+  <span style="color:#a6e22e">playerUrl</span>
 }
-</code></pre>
-
-<h3 id="start-youtube">start_youtube</h3>
-
+</code></pre></div><h3 id="start_youtube">start_youtube</h3>
 <p>A user started a YouTube live stream.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'start_youtube',
-  broadcastId,
-  playerUrl,
-  streamUrl
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;start_youtube&#39;</span>,
+  <span style="color:#a6e22e">broadcastId</span>,
+  <span style="color:#a6e22e">playerUrl</span>,
+  <span style="color:#a6e22e">streamUrl</span>
 }
-</code></pre>
-
-<h3 id="start-facebook">start_facebook</h3>
-
+</code></pre></div><h3 id="start_facebook">start_facebook</h3>
 <p>A user started a Facebook live stream.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'start_facebook',
-  streamUrl
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;start_facebook&#39;</span>,
+  <span style="color:#a6e22e">streamUrl</span>
 }
-</code></pre>
-
-<h3 id="stop-youtube">stop_youtube</h3>
-
+</code></pre></div><h3 id="stop_youtube">stop_youtube</h3>
 <p>Stop a YouTube live stream.</p>
-
-<pre><code class="language-JavaScript">eyes.send({
-  type: 'stop_youtube'
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">eyes</span>.<span style="color:#a6e22e">send</span>({
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;stop_youtube&#39;</span>
 });
-</code></pre>
-
-<h3 id="stop-facebook">stop_facebook</h3>
-
+</code></pre></div><h3 id="stop_facebook">stop_facebook</h3>
 <p>Stop a Facebook live stream.</p>
-
-<pre><code class="language-JavaScript">eyeson.send({
-  type: 'stop_facebook'
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">send</span>({
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;stop_facebook&#39;</span>
 });
-</code></pre>
-
-<h3 id="stop-broadcasts">stop_broadcasts</h3>
-
+</code></pre></div><h3 id="stop_broadcasts">stop_broadcasts</h3>
 <p>To stop all currently running broadcasts</p>
-
-<pre><code class="language-JavaScript">eyeson.send({
-  type: 'stop_broadcasts'
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">send</span>({
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;stop_broadcasts&#39;</span>
 });
-</code></pre>
-
-<h3 id="handle-youtube-error">handle_youtube_error</h3>
-
+</code></pre></div><h3 id="handle_youtube_error">handle_youtube_error</h3>
 <p>A YouTube error was received.</p>
-
-<pre><code class="language-JavaScript">{
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
 }
-</code></pre>
-
-<h3 id="handle-facebook-error">handle_facebook_error</h3>
-
+</code></pre></div><h3 id="handle_facebook_error">handle_facebook_error</h3>
 <p>A Facebook error was received.</p>
-
-<pre><code class="language-JavaScript">{
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
 }
-</code></pre>
-
-<h3 id="broadcasts-update">broadcasts_update</h3>
-
+</code></pre></div><h3 id="broadcasts_update">broadcasts_update</h3>
 <p>One or more broadcast/s was/were updated.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'broadcasts_update',
-  broadcasts: [
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;broadcasts_update&#39;</span>,
+  <span style="color:#a6e22e">broadcasts</span><span style="color:#f92672">:</span> [
     {
-      id,
-      platform: 'youtube' | 'facebook',
-      player_url,
-      user: { /* ... */ },
-      room: { /* ... */ }
+      <span style="color:#a6e22e">id</span>,
+      <span style="color:#a6e22e">platform</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;youtube&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;facebook&#39;</span>,
+      <span style="color:#a6e22e">player_url</span>,
+      <span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> { <span style="color:#75715e">/* ... */</span> },
+      <span style="color:#a6e22e">room</span><span style="color:#f92672">:</span> { <span style="color:#75715e">/* ... */</span> }
     }
   ]
 }
-</code></pre>
-
-<h2 id="error-handling-and-notifications">Error Handling and Notifications</h2>
-
+</code></pre></div><h2 id="error-handling-and-notifications">Error Handling and Notifications</h2>
 <p>The following warnings are sent by the eyeson room.</p>
-
 <ul>
 <li><code>ice_disconnected</code> &hellip; Interactive Connectivity Establishment (ICE) protocol
 reports the users connection to be gone. You might want to show your client a
 &ldquo;offline&rdquo; warning here.</li>
 </ul>
-
 <h3 id="warning">warning</h3>
-
 <p>An issue described by <code>name</code> was detected.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'warning',
-  name
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;warning&#39;</span>,
+  <span style="color:#a6e22e">name</span>
 }
-</code></pre>
-
-<h3 id="clear-warning">clear_warning</h3>
-
+</code></pre></div><h3 id="clear_warning">clear_warning</h3>
 <p>An issue described by <code>name</code> has been resolved.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'clear_warning',
-  name
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;clear_warning&#39;</span>,
+  <span style="color:#a6e22e">name</span>
 }
-</code></pre>
-
-<h2 id="quick-join-guest-access">Quick Join / Guest Access</h2>
-
-<h3 id="request-guest-user">request_guest_user</h3>
-
+</code></pre></div><h2 id="quick-join--guest-access">Quick Join / Guest Access</h2>
+<h3 id="request_guest_user">request_guest_user</h3>
 <p>With a given guest_access_token you can quickly create temporary users for
 the current eyeson room meeting. This can be used to provide a direct quick
 join or guest access. The guest_access_token will be provided with the
 room information.</p>
-
-<pre><code class="language-JavaScript">eyeson.send({
-  type:  'request_guest_user',
-  api:   this.eyeson.config.api, // set api as eyeson is not yet initialized
-  token, // guest_access_token
-  name,
-  email  // optional
-});
-</code></pre>
-
-<h3 id="guest-user">guest_user</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">send</span>({
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span>  <span style="color:#e6db74">&#39;request_guest_user&#39;</span>,
+  <span style="color:#a6e22e">api</span><span style="color:#f92672">:</span>   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">api</span>, <span style="color:#75715e">// set api as eyeson is not yet initialized
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">token</span>, <span style="color:#75715e">// guest_access_token
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">name</span>,
+  <span style="color:#a6e22e">email</span>  <span style="color:#75715e">// optional
+</span><span style="color:#75715e"></span>});
+</code></pre></div><h3 id="guest_user">guest_user</h3>
 <p>Receive a newly created guest user. This is same response as for a regular user
 but has an additional guest flag set to <code>true</code>.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'guest_user',
-  token
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;guest_user&#39;</span>,
+  <span style="color:#a6e22e">token</span>
 }
-</code></pre>
-
-<h2 id="stream-control">Stream Control</h2>
-
-<h3 id="restart-stream">restart_stream</h3>
-
+</code></pre></div><h2 id="stream-control">Stream Control</h2>
+<h3 id="restart_stream">restart_stream</h3>
 <p>After a presentation ends, restart the local stream with the previously active
 options.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'restart_stream',
-  options: {
-    audio: true | false,
-    video: true | false
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;restart_stream&#39;</span>,
+  <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">audio</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">false</span>,
+    <span style="color:#a6e22e">video</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">false</span>
   }
 }
-</code></pre>
-
-<h3 id="change-stream">change_stream</h3>
-
+</code></pre></div><h3 id="change_stream">change_stream</h3>
 <p>Update a stream e.g. to toggle audio/video.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'change_stream',
-  options: {
-    audio: true | false,
-    video: true | false
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;change_stream&#39;</span>,
+  <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">audio</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">false</span>,
+    <span style="color:#a6e22e">video</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">false</span>
   }
 }
-</code></pre>
-
-<h3 id="toggle-camera">toggle_camera</h3>
-
+</code></pre></div><h3 id="toggle_camera">toggle_camera</h3>
 <p>Update the cameras facing mode on mobile devices.</p>
-
-<pre><code class="language-JavaScript">{
-  type: 'toggle_camera',
-  stream: localStream,
-  facingMode: 'user' | 'environment'
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;toggle_camera&#39;</span>,
+  <span style="color:#a6e22e">stream</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">localStream</span>,
+  <span style="color:#a6e22e">facingMode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;user&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;environment&#39;</span>
 }
-</code></pre>
-
+</code></pre></div>
 
 			<aside class="copyright" role="note">
 				
