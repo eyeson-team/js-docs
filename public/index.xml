@@ -20,7 +20,7 @@
       <description>Screen Capture Browser Extension In order to provide screen capturing you have to build a browser extension for Google Chrome.
  Use eyeson extension. Build your own extension, checkout this blog post.  Note: Mozilla Firefox supports screen capturing without building using a browser extension.
 Screen Capture Events request_screen receive_screen end_screen ext_error Browser extension is not accessible.
-{ } Screen Capture Session Wrapper and helpers to ease handling of screen capture sessions.</description>
+{ }  Screen Capture Session Wrapper and helpers to ease handling of screen capture sessions.</description>
     </item>
     
     <item>
@@ -31,8 +31,8 @@ Screen Capture Events request_screen receive_screen end_screen ext_error Browser
       <guid>https://eyeson-team.github.io/js-docs/utilities/</guid>
       <description>Use eyeson js library additional helpers and utilities to minimize the work needed to setup your own video conferencing interface.
 Logger Collect and manage development, debug, and error messages in one place.
-eyeson.Logger.error(msg); // output error eyeson.Logger.warn(msg); // output warning eyeson.Logger.log(msg); // output log eyeson.Logger.debug(msg); // output debug Device Manager Manage audio and video device settings like a boss.
-const deviceManager = new eyeson.DeviceManager(); deviceManager.onChange(function(event) { // changeHandler  event.error; // if set it contains { name, message }, default null  event.</description>
+eyeson.Logger.error(msg); // output error eyeson.Logger.warn(msg); // output warning eyeson.Logger.log(msg); // output log eyeson.Logger.debug(msg); // output debug  Device Manager Manage audio and video device settings like a boss.
+const deviceManager = new eyeson.DeviceManager(); deviceManager.onChange(function(event) { // changeHandler event.error; // if set it contains { name, message }, default null event.</description>
     </item>
     
     <item>
