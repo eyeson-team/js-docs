@@ -71,6 +71,20 @@ eyeson.FeatureDetector.hasSenderReceiverSupport();
 eyeson.FeatureDetector.canUseVp8Codec();
 ```
 
+## StreamHelpers
+
+A collection of utilities to identify and adjust specific tracks within the stream.
+There are numerous methods, but the following come in handy to toggle audio.
+
+```JavaScript
+if (muted) {
+  StreamHelpers.enableAudio(stream);
+} else {
+  StreamHelpers.disableAudio(stream);
+}
+muted = !muted;
+```
+
 ## Sound Meter
 
 Read volumne input level from a media stream.

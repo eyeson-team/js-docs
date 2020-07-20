@@ -510,7 +510,9 @@ options.
 
 ### change\_stream
 
-Update a stream e.g. to toggle audio/video.
+Update a stream e.g. to toggle audio/video. \
+_Note:_ To avoid issues with some devices, you can use [`StreamHelpers`](/utilities/#streamhelpers)
+to toggle audio.
 
 ```JavaScript
 {
