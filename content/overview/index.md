@@ -71,6 +71,13 @@ Find more details about the types of events to be received and send in the
 
 ## Configuration
 
+Since v1.5.1 eyeson supports SFU mode in Safari (desktop and mobile). If your
+application encounters any issues, you can switch back to previous behaviour.
+
+```JavaScript
+eyeson.config.allowSafariSFU = false; // default is true
+```
+
 If you are not planning to provide screen capturing, you can deactivate it in
 the configuration.
 
