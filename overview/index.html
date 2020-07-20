@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>Overview - eyeson JavaScript Library</title>
-    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="generator" content="Hugo 0.74.1" />
 
     
     <meta name="description" content="eyeson JavaScript Library">
@@ -309,45 +309,54 @@ eyeson room.</p>
 <p>In order to receive eyeson room events register a listener using the <code>onEvent</code>
 method provided. Remember to register a handler before starting a room
 otherwise you might miss some initial events.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">handleEvent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() { <span style="color:#75715e">/* ... */</span> };
+<pre><code class="language-JavaScript">var handleEvent = function() { /* ... */ };
 
-<span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">onEvent</span>(<span style="color:#a6e22e">handleEvent</span>);  <span style="color:#75715e">// attach listener for eyeson events
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">start</span>(<span style="color:#a6e22e">token</span>);          <span style="color:#75715e">// initiate and join the room
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">destroy</span>();             <span style="color:#75715e">// destroy and cleanup a session
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">offEvent</span>(<span style="color:#a6e22e">handleEvent</span>); <span style="color:#75715e">// remove listener for eyeson events
-</span></code></pre></div><p><em>Note</em> that <code>start</code> is a convenient shorthand which handles connecting, fetching
+eyeson.onEvent(handleEvent);  // attach listener for eyeson events
+eyeson.start(token);          // initiate and join the room
+eyeson.destroy();             // destroy and cleanup a session
+eyeson.offEvent(handleEvent); // remove listener for eyeson events
+</code></pre>
+<p><em>Note</em> that <code>start</code> is a convenient shorthand which handles connecting, fetching
 initial data and joining the room for you. If you want more granular control
 over this process you can always use corresponding lower level methods:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">onEvent</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">event</span>) {
-  <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">connectionStatus</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;connected&#39;</span>) {
-    <span style="color:#66d9ef">return</span> ;
+<pre><code class="language-JavaScript">eyeson.onEvent(function(event) {
+  if(event.connectionStatus !== 'connected') {
+    return ;
   }
-  <span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">join</span>({ <span style="color:#a6e22e">audio</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">video</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> });  <span style="color:#75715e">// join the room with audio and video
-</span><span style="color:#75715e"></span>});
-<span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">connect</span>(<span style="color:#a6e22e">token</span>);                      <span style="color:#75715e">// prepare connection
-</span></code></pre></div><h2 id="using-the-eventtarget-web-api">Using the EventTarget Web API</h2>
+  eyeson.join({ audio: true, video: true });  // join the room with audio and video
+});
+eyeson.connect(token);                      // prepare connection
+</code></pre>
+<h2 id="using-the-eventtarget-web-api">Using the EventTarget Web API</h2>
 <p>If you want to handle the eyeson events via the <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget" title="EventTarget API Documentation">EventTarget API</a> you can use
 the following snippet.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">onEvent</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">dispatchOn</span>(window));
-<span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">start</span>(<span style="color:#a6e22e">token</span>)
-<span style="color:#75715e">/* then listen for events */</span>
-window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;eyeson_conf&#34;</span>, <span style="color:#a6e22e">handleEvent</span>);
-window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;eyeson_conf.receive_chat&#34;</span>, <span style="color:#a6e22e">handleIncomingChatMessage</span>);
-</code></pre></div><h2 id="sending-events">Sending Events</h2>
+<pre><code class="language-JavaScript">eyeson.onEvent(new eyeson.dispatchOn(window));
+eyeson.start(token)
+/* then listen for events */
+window.addEventListener(&quot;eyeson_conf&quot;, handleEvent);
+window.addEventListener(&quot;eyeson_conf.receive_chat&quot;, handleIncomingChatMessage);
+</code></pre>
+<h2 id="sending-events">Sending Events</h2>
 <p>There are two types of sending procedures <code>send</code> and <code>signal</code>. The first
 method, <code>send</code>, is the default and widely used. However you might require to
 send some events directly to the current session in that case use <code>signal</code>
 instead. Which method should be used depends on the event type and is further
 described in the corresponding event details.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">send</span>(<span style="color:#a6e22e">msg</span>);   <span style="color:#75715e">// send an event.
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">signal</span>(<span style="color:#a6e22e">msg</span>); <span style="color:#75715e">// send a direct message to the current session.
-</span></code></pre></div><p>Find more details about the types of events to be received and send in the
+<pre><code class="language-JavaScript">eyeson.send(msg);   // send an event.
+eyeson.signal(msg); // send a direct message to the current session.
+</code></pre>
+<p>Find more details about the types of events to be received and send in the
 <a href="events/">events section</a>.</p>
 <h2 id="configuration">Configuration</h2>
+<p>Since v1.5.1 eyeson supports SFU mode in Safari (desktop and mobile). If your
+application encounters any issues, you can switch back to previous behaviour.</p>
+<pre><code class="language-JavaScript">eyeson.config.allowSafariSFU = false; // default is true
+</code></pre>
 <p>If you are not planning to provide screen capturing, you can deactivate it in
 the configuration.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">screencapture</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
-</code></pre></div>
+<pre><code class="language-JavaScript">eyeson.config.screencapture = false;
+</code></pre>
+
 
 			<aside class="copyright" role="note">
 				
@@ -472,7 +481,8 @@ the configuration.</p>
 
     
 
-    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>
 

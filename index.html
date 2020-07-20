@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>eyeson JS Library</title>
-    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="generator" content="Hugo 0.74.1" />
 
     
     <meta name="description" content="eyeson JavaScript Library">
@@ -320,17 +320,18 @@ Angular, or Elm, with or without using additional event handling libraries
 like Redux or RxJS.</li>
 </ul>
 <p>You can start your own video conferencing app with a few lines of JavaScript:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">onEvent</span>(<span style="color:#a6e22e">event</span> =&gt; {
-  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">type</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#34;accept&#34;</span>) {
-    <span style="color:#66d9ef">return</span>;
+<pre><code class="language-js">eyeson.onEvent(event =&gt; {
+  if (event.type !== &quot;accept&quot;) {
+    return;
   }
-  <span style="color:#75715e">// Note: Some iOS devices might require video to have autoplay attribute set.
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">video</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#34;video&#34;</span>);
-  <span style="color:#a6e22e">video</span>.<span style="color:#a6e22e">srcObject</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">remoteStream</span>;
-  <span style="color:#a6e22e">video</span>.<span style="color:#a6e22e">play</span>();
+  // Note: Some iOS devices might require video to have autoplay attribute set.
+  let video = document.querySelector(&quot;video&quot;);
+  video.srcObject = event.remoteStream;
+  video.play();
 });
-<span style="color:#a6e22e">eyeson</span>.<span style="color:#a6e22e">start</span>(<span style="color:#e6db74">&#34;&lt;access-key&gt;&#34;</span>);
-</code></pre></div><p>Visit the <a href="overview/">overview</a> section of this guide to familiarize yourself
+eyeson.start(&quot;&lt;access-key&gt;&quot;);
+</code></pre>
+<p>Visit the <a href="overview/">overview</a> section of this guide to familiarize yourself
 with some general concepts of the library.</p>
 <p>The <a href="events/">events</a> section is a handy reference of all events the library
 exposes during a conference session.</p>
@@ -452,7 +453,8 @@ to help.</p>
 
     
 
-    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>
 
