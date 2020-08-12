@@ -51,11 +51,8 @@ identification techniques.
 ```JavaScript
 eyeson.FeatureDetector.canUseEyeson();
 eyeson.FeatureDetector.canScreenCapture();
-eyeson.FeatureDetector.canChangeAudioOutput();
-eyeson.FeatureDetector.isAndroidDevice();
-eyeson.FeatureDetector.isIOSDevice();
 eyeson.FeatureDetector.inIframe();
-eyeson.FeatureDetector.hasMobileApp();
+eyeson.FeatureDetector.hasMobileDevice();
 ```
 
 The Feature Detector also provides lower level checks that are used in the
@@ -63,12 +60,10 @@ library itself or to provide specific advises to an end user. You propably
 won't need them but for the sake of completeness:
 
 ```JavaScript
-eyeson.FeatureDetector.canHandleMediaStreams();
-eyeson.FeatureDetector.canHandlePeerConnection();
-eyeson.FeatureDetector.canHandleIceConnection();
-eyeson.FeatureDetector.canUpdatePeerConnection();
-eyeson.FeatureDetector.hasSenderReceiverSupport();
-eyeson.FeatureDetector.canUseVp8Codec();
+eyeson.FeatureDetector.canToggleCamera();
+eyeson.FeatureDetector.canFullscreen();
+eyeson.FeatureDetector.canPip();
+eyeson.FeatureDetector.canSFU();
 ```
 
 ## StreamHelpers
