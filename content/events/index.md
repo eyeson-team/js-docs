@@ -517,10 +517,8 @@ to toggle audio.
 ```JavaScript
 {
   type: 'change_stream',
-  options: {
-    audio: true | false,
-    video: true | false
-  }
+  audio: true | false,
+  video: true | false
 }
 ```
 
