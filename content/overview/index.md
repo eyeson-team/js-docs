@@ -67,7 +67,7 @@ eyeson.signal(msg); // send a direct message to the current session.
 ```
 
 Find more details about the types of events to be received and send in the
-[events section](/js-docs/events/).
+[events section](/events/).
 
 ## Configuration
 
