@@ -58,4 +58,4 @@ sure the eyeson services will fit your particular needs, shoot us a
 to help.
 
 [eyeson.team]: https://eyeson.team/ "eyeson Team Video Meetings"
-[GitHub issue]: https://github.com/eyeson-team/eyeson-js/issues
+[GitHub issue]: https://github.com/eyeson-team/js-docs/issues
