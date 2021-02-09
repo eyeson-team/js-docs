@@ -652,11 +652,12 @@ but has an additional guest flag set to <code>true</code>.</p>
 }
 </code></pre>
 <h2 id="stream-control">Stream Control</h2>
-<h3 id="restart_stream">restart_stream</h3>
-<p>After a presentation ends, restart the local stream with the previously active
-options.</p>
+<h3 id="start_stream">start_stream</h3>
+<p>After a presentation ends, re-start the local stream with the previously active
+options.<br>
+It can also be used after devices are changed. See <a href="https://eyeson-team.github.io/js-docs/utilities/#device-manager"><code>Device Manager</code></a> for further information.</p>
 <pre><code class="language-JavaScript">{
-  type: 'restart_stream',
+  type: 'start_stream',
   options: {
     audio: true | false,
     video: true | false
