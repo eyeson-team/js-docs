@@ -19,7 +19,9 @@ eyeson.Logger.debug(msg); // output debug
 
 ## Device Manager
 
-Manage audio and video device settings like a boss.
+Manage audio and video device settings.\
+_Note:_ Always make sure to call `storeConstraints` after devices are changed, so that
+a following [`start_stream`](/events/#start_stream) will actually use them.
 
 ```JavaScript
 const deviceManager = new eyeson.DeviceManager();

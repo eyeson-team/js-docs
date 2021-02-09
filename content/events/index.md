@@ -493,14 +493,15 @@ but has an additional guest flag set to `true`.
 
 ## Stream Control
 
-### restart\_stream
+### start\_stream
 
-After a presentation ends, restart the local stream with the previously active
-options.
+After a presentation ends, re-start the local stream with the previously active
+options.\
+It can also be used after devices are changed. See [`Device Manager`](/utilities/#device-manager) for further information.
 
 ```JavaScript
 {
-  type: 'restart_stream',
+  type: 'start_stream',
   options: {
     audio: true | false,
     video: true | false
