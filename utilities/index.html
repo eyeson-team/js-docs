@@ -308,7 +308,9 @@ eyeson.Logger.log(msg);   // output log
 eyeson.Logger.debug(msg); // output debug
 </code></pre>
 <h2 id="device-manager">Device Manager</h2>
-<p>Manage audio and video device settings like a boss.</p>
+<p>Manage audio and video device settings.<br>
+<em>Note:</em> Always make sure to call <code>storeConstraints</code> after devices are changed, so that
+a following <a href="https://eyeson-team.github.io/js-docs/events/#start_stream"><code>start_stream</code></a> will actually use them.</p>
 <pre><code class="language-JavaScript">const deviceManager = new eyeson.DeviceManager();
 deviceManager.onChange(function(event) { // changeHandler
   event.error; // if set it contains { name, message }, default null
