@@ -323,9 +323,9 @@ deviceManager.onChange(function(event) { // changeHandler
   event.options; // selected options
 });
 deviceManager.start(); // start checking device changes
-deviceManager.setVideoInput(camera); // switch camera
-deviceManager.setAudioInput(microphone); // switch microphone
-deviceManager.setAudioOutput(speaker); // switch speaker
+deviceManager.setVideoInput(deviceId); // switch camera
+deviceManager.setAudioInput(deviceId); // switch microphone
+deviceManager.setAudioOutput(sinkId); // switch audio output, speakers
 deviceManager.storeConstraints(); // store current selection
 deviceManager.removeListener(changeHandler); // remove listeners if registered via onChange
 deviceManager.stop(); // stop checking device changes
