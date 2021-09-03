@@ -18,7 +18,7 @@ method provided. Remember to register a handler before starting a room
 otherwise you might miss some initial events.
 
 ```JavaScript
-var handleEvent = function() { /* ... */ };
+const handleEvent = function() { /* ... */ };
 
 eyeson.onEvent(handleEvent);  // attach listener for eyeson events
 eyeson.start(token);          // initiate and join the room
@@ -40,30 +40,35 @@ eyeson.onEvent(function(event) {
 eyeson.connect(token);                      // prepare connection
 ```
 
+Since v1.6.2 you can even start or join with any custom MediaStream
+
+```JavaScript
+eyeson.start('<access_key>', { stream });
+```
+
 ## Using the EventTarget Web API
 
 If you want to handle the eyeson events via the [EventTarget API] you can use
 the following snippet.
 
 ```JavaScript
-eyeson.onEvent(new eyeson.dispatchOn(window));
-eyeson.start(token)
+eyeson.onEvent(function (event) {
+  window.dispatchEvent(new CustomEvent('eyeson', { detail: event }));
+  window.dispatchEvent(new CustomEvent('eyeson.' + event.type, { detail: event }));
+});
+eyeson.start(token);
 /* then listen for events */
-window.addEventListener("eyeson_conf", handleEvent);
-window.addEventListener("eyeson_conf.receive_chat", handleIncomingChatMessage);
+window.addEventListener('eyeson', handleEvent);
+window.addEventListener('eyeson.chat', handleIncomingChatMessage);
 ```
 
 ## Sending Events
 
-There are two types of sending procedures `send` and `signal`. The first
-method, `send`, is the default and widely used. However you might require to
-send some events directly to the current session in that case use `signal`
-instead. Which method should be used depends on the event type and is further
-described in the corresponding event details.
+Sending events is a crucial part of interacting with the meeting library. This
+way actions can be triggered from the user's end.
 
 ```JavaScript
 eyeson.send(msg);   // send an event.
-eyeson.signal(msg); // send a direct message to the current session.
 ```
 
 Find more details about the types of events to be received and send in the

@@ -119,8 +119,8 @@ Received once a session for the room has been established.
 ```JavaScript
 {
   type: 'accept',
-  stream: MediaStream,     // the remote stream you're receiving
-  localStream: MediaStream // your local stream
+  remoteStream: MediaStream, // the remote stream you're receiving
+  localStream: MediaStream   // your local stream
 }
 ```
 
@@ -328,6 +328,28 @@ Received when the rooms recording state is updated.
 
 ## Broadcast
 
+### start\_rtmp
+
+A user started an RTMP live stream.
+
+```JavaScript
+{
+  type: 'start_rtmp',
+  url,
+  key
+}
+```
+
+### stop\_rtmp
+
+A user started an RTMP live stream.
+
+```JavaScript
+{
+  type: 'stop_rtmp'
+}
+```
+
 ### publish\_broadcast
 
 Received after a broadcast has been published to the streaming platform.
@@ -497,21 +519,31 @@ but has an additional guest flag set to `true`.
 
 After a presentation ends, re-start the local stream with the previously active
 options.\
-It can also be used after devices are changed. See [`Device Manager`](/utilities/#device-manager) for further information.
+It can also be used after devices are changed. See [`Device Manager`](/utilities/#device-manager) for further information.\
+If `screen = true`, `video => false`.
 
 ```JavaScript
 {
   type: 'start_stream',
-  options: {
-    audio: true | false,
-    video: true | false
-  }
+  audio: true | false, // default: true
+  video: true | false, // default: true
+  screen: true | false // default: false
+}
+```
+
+The `screen` parameter is used to switch from camera to screen stream.
+
+```JavaScript
+{
+  type: 'start_stream',
+  audio: true | false, // set true to add microphone
+  screen: true
 }
 ```
 
 ### change\_stream
 
-Update a stream e.g. to toggle audio/video. \
+Update a stream e.g. to toggle audio/video/screen. \
 _Note:_ To avoid issues with some devices, you can use [`StreamHelpers`](/utilities/#streamhelpers)
 to toggle audio.
 
@@ -519,7 +551,8 @@ to toggle audio.
 {
   type: 'change_stream',
   audio: true | false,
-  video: true | false
+  video: true | false,
+  screen: true | false
 }
 ```
 
@@ -532,6 +565,18 @@ Update the cameras facing mode on mobile devices.
   type: 'toggle_camera',
   stream: localStream,
   facingMode: 'user' | 'environment'
+}
+```
+
+### replace\_stream
+
+Replace current stream with any custom MediaStream.\
+_(First audio track and/or first video track with `readyState = "live"` are used)_
+
+```JavaScript
+{
+  type: 'replace_stream',
+  stream
 }
 ```
 

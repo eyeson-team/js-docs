@@ -11,10 +11,12 @@ needed to setup your own video conferencing interface.
 Collect and manage development, debug, and error messages in one place.
 
 ```JavaScript
-eyeson.Logger.error(msg); // output error
-eyeson.Logger.warn(msg);  // output warning
-eyeson.Logger.log(msg);   // output log
-eyeson.Logger.debug(msg); // output debug
+import { Logger } from 'eyeson';
+
+Logger.error(msg); // output error
+Logger.warn(msg);  // output warning
+Logger.log(msg);   // output log
+Logger.debug(msg); // output debug
 ```
 
 ## Device Manager
@@ -24,7 +26,9 @@ _Note:_ Always make sure to call `storeConstraints` after devices are changed, s
 a following [`start_stream`](/events/#start_stream) will actually use them.
 
 ```JavaScript
-const deviceManager = new eyeson.DeviceManager();
+import { DeviceManager } from 'eyeson';
+
+const deviceManager = new DeviceManager();
 deviceManager.onChange(function(event) { // changeHandler
   event.error; // if set it contains { name, message }, default null
   event.cameras; // available cameras
@@ -51,10 +55,12 @@ notifications, messages, and fallbacks instead of relying on browser
 identification techniques.
 
 ```JavaScript
-eyeson.FeatureDetector.canUseEyeson();
-eyeson.FeatureDetector.canScreenCapture();
-eyeson.FeatureDetector.inIframe();
-eyeson.FeatureDetector.hasMobileDevice();
+import { FeatureDetector } from 'eyeson';
+
+FeatureDetector.canUseEyeson();
+FeatureDetector.canScreenCapture();
+FeatureDetector.inIframe();
+FeatureDetector.hasMobileDevice();
 ```
 
 The Feature Detector also provides lower level checks that are used in the
@@ -62,10 +68,10 @@ library itself or to provide specific advises to an end user. You propably
 won't need them but for the sake of completeness:
 
 ```JavaScript
-eyeson.FeatureDetector.canToggleCamera();
-eyeson.FeatureDetector.canFullscreen();
-eyeson.FeatureDetector.canPip();
-eyeson.FeatureDetector.canSFU();
+FeatureDetector.canToggleCamera();
+FeatureDetector.canFullscreen();
+FeatureDetector.canPip();
+FeatureDetector.canSFU();
 ```
 
 ## StreamHelpers
@@ -74,12 +80,9 @@ A collection of utilities to identify and adjust specific tracks within the stre
 There are numerous methods, but the following come in handy to toggle audio.
 
 ```JavaScript
-if (muted) {
-  StreamHelpers.enableAudio(stream);
-} else {
-  StreamHelpers.disableAudio(stream);
-}
-muted = !muted;
+import { StreamHelpers } from 'eyeson';
+
+StreamHelpers.toggleAudio(stream, enabled); // enabled can be true or false
 ```
 
 ## Sound Meter
@@ -87,7 +90,9 @@ muted = !muted;
 Read volumne input level from a media stream.
 
 ```JavaScript
-const soundMeter = eyeson.SoundMeter.new();
+import { SoundMeter } from 'eyeson';
+
+const soundMeter = new SoundMeter();
 soundMeter
   .connectToSource(stream) // bind stream, listen for audio
   .onUpdate(function(event) { // listen on updates
@@ -100,27 +105,19 @@ soundMeter.stop(); // stop checking the stream for audio
 ## YouTube API
 
 ```JavaScript
-const ytApi = new eyeson.YoutubeApi(eyeson);
+import eyeson, { YoutubeApi } from 'eyeson';
+
+const ytApi = new YoutubeApi(eyeson);
 // TODO...
 ```
 
 ## Facebook API
 
 ```JavaScript
-const fbApi = new eyeson.FacebookApi(eyeson);
+import eyeson, { FacebookApi } from 'eyeson';
+
+const fbApi = new FacebookApi(eyeson);
 // TODO...
-```
-
-## Date Helper
-
-Very basic date formatting helpers.
-
-```JavaScript
-eyeson.date.ensureDate(date); // convert number, string or Date to Date
-eyeson.date.formatDate(date); // format with toLocalDate (with fallback)
-eyeson.date.monthNames; // ['January', ... ]
-eyeson.date.beautifulDate(date); // neat date format, 'November 25th, 2016'
-eyeson.date.formatTime(date); // format with toLocaleTimeString (with fallback)
 ```
 
 ## Debounce Helper
@@ -130,7 +127,9 @@ milliseconds) limits to. Use the immediate flag to indicate if the function
 should be executed before or after the wait time.
 
 ```JavaScript
-eyeson.debounce(func, wait, immediate); // debounce function
+import { debounce } from 'eyeson';
+
+debounce(func, wait, immediate); // debounce function
 ```
 
 Use this method to enhance performance on several executions. Let's say you
