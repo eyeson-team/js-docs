@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>Events - eyeson JavaScript Library</title>
-    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="generator" content="Hugo 0.87.0" />
 
     
     <meta name="description" content="eyeson JavaScript Library">
@@ -391,8 +391,8 @@ received.</p>
 <p>Received once a session for the room has been established.</p>
 <pre><code class="language-JavaScript">{
   type: 'accept',
-  stream: MediaStream,     // the remote stream you're receiving
-  localStream: MediaStream // your local stream
+  remoteStream: MediaStream, // the remote stream you're receiving
+  localStream: MediaStream   // your local stream
 }
 </code></pre>
 <h3 id="stream_update">stream_update</h3>
@@ -542,6 +542,20 @@ for many applications.</p>
 }
 </code></pre>
 <h2 id="broadcast">Broadcast</h2>
+<h3 id="start_rtmp">start_rtmp</h3>
+<p>A user started an RTMP live stream.</p>
+<pre><code class="language-JavaScript">{
+  type: 'start_rtmp',
+  url,
+  key
+}
+</code></pre>
+<h3 id="stop_rtmp">stop_rtmp</h3>
+<p>A user started an RTMP live stream.</p>
+<pre><code class="language-JavaScript">{
+  type: 'stop_rtmp'
+}
+</code></pre>
 <h3 id="publish_broadcast">publish_broadcast</h3>
 <p>Received after a broadcast has been published to the streaming platform.</p>
 <pre><code class="language-JavaScript">{
@@ -655,23 +669,31 @@ but has an additional guest flag set to <code>true</code>.</p>
 <h3 id="start_stream">start_stream</h3>
 <p>After a presentation ends, re-start the local stream with the previously active
 options.<br>
-It can also be used after devices are changed. See <a href="https://eyeson-team.github.io/js-docs/utilities/#device-manager"><code>Device Manager</code></a> for further information.</p>
+It can also be used after devices are changed. See <a href="https://eyeson-team.github.io/js-docs/utilities/#device-manager"><code>Device Manager</code></a> for further information.<br>
+If <code>screen = true</code>, <code>video =&gt; false</code>.</p>
 <pre><code class="language-JavaScript">{
   type: 'start_stream',
-  options: {
-    audio: true | false,
-    video: true | false
-  }
+  audio: true | false, // default: true
+  video: true | false, // default: true
+  screen: true | false // default: false
+}
+</code></pre>
+<p>The <code>screen</code> parameter is used to switch from camera to screen stream.</p>
+<pre><code class="language-JavaScript">{
+  type: 'start_stream',
+  audio: true | false, // set true to add microphone
+  screen: true
 }
 </code></pre>
 <h3 id="change_stream">change_stream</h3>
-<p>Update a stream e.g. to toggle audio/video.<br>
+<p>Update a stream e.g. to toggle audio/video/screen.<br>
 <em>Note:</em> To avoid issues with some devices, you can use <a href="https://eyeson-team.github.io/js-docs/utilities/#streamhelpers"><code>StreamHelpers</code></a>
 to toggle audio.</p>
 <pre><code class="language-JavaScript">{
   type: 'change_stream',
   audio: true | false,
-  video: true | false
+  video: true | false,
+  screen: true | false
 }
 </code></pre>
 <h3 id="toggle_camera">toggle_camera</h3>
@@ -680,6 +702,14 @@ to toggle audio.</p>
   type: 'toggle_camera',
   stream: localStream,
   facingMode: 'user' | 'environment'
+}
+</code></pre>
+<h3 id="replace_stream">replace_stream</h3>
+<p>Replace current stream with any custom MediaStream.<br>
+<em>(First audio track and/or first video track with <code>readyState = &quot;live&quot;</code> are used)</em></p>
+<pre><code class="language-JavaScript">{
+  type: 'replace_stream',
+  stream
 }
 </code></pre>
 
