@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>Overview - eyeson JavaScript Library</title>
-    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="generator" content="Hugo 0.87.0" />
 
     
     <meta name="description" content="eyeson JavaScript Library">
@@ -309,7 +309,7 @@ eyeson room.</p>
 <p>In order to receive eyeson room events register a listener using the <code>onEvent</code>
 method provided. Remember to register a handler before starting a room
 otherwise you might miss some initial events.</p>
-<pre><code class="language-JavaScript">var handleEvent = function() { /* ... */ };
+<pre><code class="language-JavaScript">const handleEvent = function() { /* ... */ };
 
 eyeson.onEvent(handleEvent);  // attach listener for eyeson events
 eyeson.start(token);          // initiate and join the room
@@ -327,23 +327,25 @@ over this process you can always use corresponding lower level methods:</p>
 });
 eyeson.connect(token);                      // prepare connection
 </code></pre>
+<p>Since v1.6.2 you can even start or join with any custom MediaStream</p>
+<pre><code class="language-JavaScript">eyeson.start('&lt;access_key&gt;', { stream });
+</code></pre>
 <h2 id="using-the-eventtarget-web-api">Using the EventTarget Web API</h2>
 <p>If you want to handle the eyeson events via the <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget" title="EventTarget API Documentation">EventTarget API</a> you can use
 the following snippet.</p>
-<pre><code class="language-JavaScript">eyeson.onEvent(new eyeson.dispatchOn(window));
-eyeson.start(token)
+<pre><code class="language-JavaScript">eyeson.onEvent(function (event) {
+  window.dispatchEvent(new CustomEvent('eyeson', { detail: event }));
+  window.dispatchEvent(new CustomEvent('eyeson.' + event.type, { detail: event }));
+});
+eyeson.start(token);
 /* then listen for events */
-window.addEventListener(&quot;eyeson_conf&quot;, handleEvent);
-window.addEventListener(&quot;eyeson_conf.receive_chat&quot;, handleIncomingChatMessage);
+window.addEventListener('eyeson', handleEvent);
+window.addEventListener('eyeson.chat', handleIncomingChatMessage);
 </code></pre>
 <h2 id="sending-events">Sending Events</h2>
-<p>There are two types of sending procedures <code>send</code> and <code>signal</code>. The first
-method, <code>send</code>, is the default and widely used. However you might require to
-send some events directly to the current session in that case use <code>signal</code>
-instead. Which method should be used depends on the event type and is further
-described in the corresponding event details.</p>
+<p>Sending events is a crucial part of interacting with the meeting library. This
+way actions can be triggered from the user&rsquo;s end.</p>
 <pre><code class="language-JavaScript">eyeson.send(msg);   // send an event.
-eyeson.signal(msg); // send a direct message to the current session.
 </code></pre>
 <p>Find more details about the types of events to be received and send in the
 <a href="https://eyeson-team.github.io/js-docs/events/">events section</a>.</p>

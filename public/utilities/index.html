@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>Utilities - eyeson JavaScript Library</title>
-    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="generator" content="Hugo 0.87.0" />
 
     
     <meta name="description" content="eyeson JavaScript Library">
@@ -302,16 +302,20 @@
 needed to setup your own video conferencing interface.</p>
 <h2 id="logger">Logger</h2>
 <p>Collect and manage development, debug, and error messages in one place.</p>
-<pre><code class="language-JavaScript">eyeson.Logger.error(msg); // output error
-eyeson.Logger.warn(msg);  // output warning
-eyeson.Logger.log(msg);   // output log
-eyeson.Logger.debug(msg); // output debug
+<pre><code class="language-JavaScript">import { Logger } from 'eyeson';
+
+Logger.error(msg); // output error
+Logger.warn(msg);  // output warning
+Logger.log(msg);   // output log
+Logger.debug(msg); // output debug
 </code></pre>
 <h2 id="device-manager">Device Manager</h2>
 <p>Manage audio and video device settings.<br>
 <em>Note:</em> Always make sure to call <code>storeConstraints</code> after devices are changed, so that
 a following <a href="https://eyeson-team.github.io/js-docs/events/#start_stream"><code>start_stream</code></a> will actually use them.</p>
-<pre><code class="language-JavaScript">const deviceManager = new eyeson.DeviceManager();
+<pre><code class="language-JavaScript">import { DeviceManager } from 'eyeson';
+
+const deviceManager = new DeviceManager();
 deviceManager.onChange(function(event) { // changeHandler
   event.error; // if set it contains { name, message }, default null
   event.cameras; // available cameras
@@ -334,32 +338,33 @@ deviceManager.stop(); // stop checking device changes
 <p>Detect user agents capabilities in order to provide user friendly
 notifications, messages, and fallbacks instead of relying on browser
 identification techniques.</p>
-<pre><code class="language-JavaScript">eyeson.FeatureDetector.canUseEyeson();
-eyeson.FeatureDetector.canScreenCapture();
-eyeson.FeatureDetector.inIframe();
-eyeson.FeatureDetector.hasMobileDevice();
+<pre><code class="language-JavaScript">import { FeatureDetector } from 'eyeson';
+
+FeatureDetector.canUseEyeson();
+FeatureDetector.canScreenCapture();
+FeatureDetector.inIframe();
+FeatureDetector.hasMobileDevice();
 </code></pre>
 <p>The Feature Detector also provides lower level checks that are used in the
 library itself or to provide specific advises to an end user. You propably
 won&rsquo;t need them but for the sake of completeness:</p>
-<pre><code class="language-JavaScript">eyeson.FeatureDetector.canToggleCamera();
-eyeson.FeatureDetector.canFullscreen();
-eyeson.FeatureDetector.canPip();
-eyeson.FeatureDetector.canSFU();
+<pre><code class="language-JavaScript">FeatureDetector.canToggleCamera();
+FeatureDetector.canFullscreen();
+FeatureDetector.canPip();
+FeatureDetector.canSFU();
 </code></pre>
 <h2 id="streamhelpers">StreamHelpers</h2>
 <p>A collection of utilities to identify and adjust specific tracks within the stream.
 There are numerous methods, but the following come in handy to toggle audio.</p>
-<pre><code class="language-JavaScript">if (muted) {
-  StreamHelpers.enableAudio(stream);
-} else {
-  StreamHelpers.disableAudio(stream);
-}
-muted = !muted;
+<pre><code class="language-JavaScript">import { StreamHelpers } from 'eyeson';
+
+StreamHelpers.toggleAudio(stream, enabled); // enabled can be true or false
 </code></pre>
 <h2 id="sound-meter">Sound Meter</h2>
 <p>Read volumne input level from a media stream.</p>
-<pre><code class="language-JavaScript">const soundMeter = eyeson.SoundMeter.new();
+<pre><code class="language-JavaScript">import { SoundMeter } from 'eyeson';
+
+const soundMeter = new SoundMeter();
 soundMeter
   .connectToSource(stream) // bind stream, listen for audio
   .onUpdate(function(event) { // listen on updates
@@ -369,26 +374,24 @@ soundMeter
 soundMeter.stop(); // stop checking the stream for audio
 </code></pre>
 <h2 id="youtube-api">YouTube API</h2>
-<pre><code class="language-JavaScript">const ytApi = new eyeson.YoutubeApi(eyeson);
+<pre><code class="language-JavaScript">import eyeson, { YoutubeApi } from 'eyeson';
+
+const ytApi = new YoutubeApi(eyeson);
 // TODO...
 </code></pre>
 <h2 id="facebook-api">Facebook API</h2>
-<pre><code class="language-JavaScript">const fbApi = new eyeson.FacebookApi(eyeson);
+<pre><code class="language-JavaScript">import eyeson, { FacebookApi } from 'eyeson';
+
+const fbApi = new FacebookApi(eyeson);
 // TODO...
-</code></pre>
-<h2 id="date-helper">Date Helper</h2>
-<p>Very basic date formatting helpers.</p>
-<pre><code class="language-JavaScript">eyeson.date.ensureDate(date); // convert number, string or Date to Date
-eyeson.date.formatDate(date); // format with toLocalDate (with fallback)
-eyeson.date.monthNames; // ['January', ... ]
-eyeson.date.beautifulDate(date); // neat date format, 'November 25th, 2016'
-eyeson.date.formatTime(date); // format with toLocaleTimeString (with fallback)
 </code></pre>
 <h2 id="debounce-helper">Debounce Helper</h2>
 <p>Efficiently execute a function but not more often than the given wait time (in
 milliseconds) limits to. Use the immediate flag to indicate if the function
 should be executed before or after the wait time.</p>
-<pre><code class="language-JavaScript">eyeson.debounce(func, wait, immediate); // debounce function
+<pre><code class="language-JavaScript">import { debounce } from 'eyeson';
+
+debounce(func, wait, immediate); // debounce function
 </code></pre>
 <p>Use this method to enhance performance on several executions. Let&rsquo;s say you
 want to act on a browser window resize, simply listening on the event may
