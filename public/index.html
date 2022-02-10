@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>eyeson JS Library</title>
-    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="generator" content="Hugo 0.87.0" />
 
     
     <meta name="description" content="eyeson JavaScript Library">
@@ -147,7 +147,7 @@
         </div>
       
       <div class="name">
-        <strong>eyeson JavaScript Library <span class="version">1.6.2</span></strong>
+        <strong>eyeson JavaScript Library <span class="version">1.7.1</span></strong>
         
           <br>
           eyeson-team/js-docs
@@ -316,15 +316,14 @@ like Redux or RxJS.</li>
 </ul>
 <p>You can start your own video conferencing app with a few lines of JavaScript:</p>
 <pre><code class="language-js">eyeson.onEvent(event =&gt; {
-  if (event.type !== &quot;accept&quot;) {
-    return;
+  if (event.type === 'accept') {
+    // Note: Some iOS devices might require video to have autoplay attribute set.
+    const video = document.querySelector('video');
+    video.srcObject = event.remoteStream;
+    video.play();
   }
-  // Note: Some iOS devices might require video to have autoplay attribute set.
-  let video = document.querySelector(&quot;video&quot;);
-  video.srcObject = event.remoteStream;
-  video.play();
 });
-eyeson.start(&quot;&lt;access-key&gt;&quot;);
+eyeson.start('&lt;access-key&gt;');
 </code></pre>
 <p>Visit the <a href="overview/">overview</a> section of this guide to familiarize yourself
 with some general concepts of the library.</p>
@@ -344,7 +343,7 @@ to help.</p>
 
 			<aside class="copyright" role="note">
 				
-				&copy; 2021 eyeson GmbH &ndash;
+				&copy; 2022 eyeson GmbH &ndash;
 				
 				Documentation built with
 				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
