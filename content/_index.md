@@ -29,15 +29,14 @@ You can start your own video conferencing app with a few lines of JavaScript:
 
 ```js
 eyeson.onEvent(event => {
-  if (event.type !== "accept") {
-    return;
+  if (event.type === 'accept') {
+    // Note: Some iOS devices might require video to have autoplay attribute set.
+    const video = document.querySelector('video');
+    video.srcObject = event.remoteStream;
+    video.play();
   }
-  // Note: Some iOS devices might require video to have autoplay attribute set.
-  let video = document.querySelector("video");
-  video.srcObject = event.remoteStream;
-  video.play();
 });
-eyeson.start("<access-key>");
+eyeson.start('<access-key>');
 ```
 
 Visit the [overview](overview/) section of this guide to familiarize yourself

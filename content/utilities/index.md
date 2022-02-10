@@ -29,7 +29,7 @@ a following [`start_stream`](/events/#start_stream) will actually use them.
 import { DeviceManager } from 'eyeson';
 
 const deviceManager = new DeviceManager();
-deviceManager.onChange(function(event) { // changeHandler
+deviceManager.onChange(event => { // changeHandler
   event.error; // if set it contains { name, message }, default null
   event.cameras; // available cameras
   event.microphones; // available microphones
@@ -95,10 +95,10 @@ import { SoundMeter } from 'eyeson';
 const soundMeter = new SoundMeter();
 soundMeter
   .connectToSource(stream) // bind stream, listen for audio
-  .onUpdate(function(event) { // listen on updates
+  .onUpdate(event => { // listen on updates
     event.error, // an error occurred, default: null
     event.value  // audio level between 0 and 100
-  });
+  };
 soundMeter.stop(); // stop checking the stream for audio
 ```
 
@@ -108,15 +108,6 @@ soundMeter.stop(); // stop checking the stream for audio
 import eyeson, { YoutubeApi } from 'eyeson';
 
 const ytApi = new YoutubeApi(eyeson);
-// TODO...
-```
-
-## Facebook API
-
-```JavaScript
-import eyeson, { FacebookApi } from 'eyeson';
-
-const fbApi = new FacebookApi(eyeson);
 // TODO...
 ```
 

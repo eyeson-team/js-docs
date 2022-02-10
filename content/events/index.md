@@ -374,17 +374,6 @@ A user started a YouTube live stream.
 }
 ```
 
-### start\_facebook
-
-A user started a Facebook live stream.
-
-```JavaScript
-{
-  type: 'start_facebook',
-  streamUrl
-}
-```
-
 ### stop\_youtube
 
 Stop a YouTube live stream.
@@ -392,16 +381,6 @@ Stop a YouTube live stream.
 ```JavaScript
 eyes.send({
   type: 'stop_youtube'
-});
-```
-
-### stop\_facebook
-
-Stop a Facebook live stream.
-
-```JavaScript
-eyeson.send({
-  type: 'stop_facebook'
 });
 ```
 
@@ -424,15 +403,6 @@ A YouTube error was received.
 }
 ```
 
-### handle\_facebook\_error
-
-A Facebook error was received.
-
-```JavaScript
-{
-}
-```
-
 ### broadcasts\_update
 
 One or more broadcast/s was/were updated.
@@ -443,7 +413,7 @@ One or more broadcast/s was/were updated.
   broadcasts: [
     {
       id,
-      platform: 'youtube' | 'facebook',
+      platform: 'youtube',
       player_url,
       user: { /* ... */ },
       room: { /* ... */ }

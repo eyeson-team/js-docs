@@ -31,11 +31,10 @@ initial data and joining the room for you. If you want more granular control
 over this process you can always use corresponding lower level methods:
 
 ```JavaScript
-eyeson.onEvent(function(event) {
-  if(event.connectionStatus !== 'connected') {
-    return ;
+eyeson.onEvent(event => {
+  if (event.connectionStatus === 'connected') {
+    eyeson.join({ audio: true, video: true });  // join the room with audio and video
   }
-  eyeson.join({ audio: true, video: true });  // join the room with audio and video
 });
 eyeson.connect(token);                      // prepare connection
 ```
@@ -52,7 +51,7 @@ If you want to handle the eyeson events via the [EventTarget API] you can use
 the following snippet.
 
 ```JavaScript
-eyeson.onEvent(function (event) {
+eyeson.onEvent(event => {
   window.dispatchEvent(new CustomEvent('eyeson', { detail: event }));
   window.dispatchEvent(new CustomEvent('eyeson.' + event.type, { detail: event }));
 });
