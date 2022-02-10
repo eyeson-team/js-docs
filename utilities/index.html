@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>Utilities - eyeson JavaScript Library</title>
-    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="generator" content="Hugo 0.87.0" />
 
     
     <meta name="description" content="eyeson JavaScript Library">
@@ -144,7 +144,7 @@
         </div>
       
       <div class="name">
-        <strong>eyeson JavaScript Library <span class="version">1.6.2</span></strong>
+        <strong>eyeson JavaScript Library <span class="version">1.7.1</span></strong>
         
           <br>
           eyeson-team/js-docs
@@ -311,7 +311,7 @@ a following <a href="https://eyeson-team.github.io/js-docs/events/#start_stream"
 <pre><code class="language-JavaScript">import { DeviceManager } from 'eyeson';
 
 const deviceManager = new DeviceManager();
-deviceManager.onChange(function(event) { // changeHandler
+deviceManager.onChange(event =&gt; { // changeHandler
   event.error; // if set it contains { name, message }, default null
   event.cameras; // available cameras
   event.microphones; // available microphones
@@ -362,22 +362,16 @@ StreamHelpers.toggleAudio(stream, enabled); // enabled can be true or false
 const soundMeter = new SoundMeter();
 soundMeter
   .connectToSource(stream) // bind stream, listen for audio
-  .onUpdate(function(event) { // listen on updates
+  .onUpdate(event =&gt; { // listen on updates
     event.error, // an error occurred, default: null
     event.value  // audio level between 0 and 100
-  });
+  };
 soundMeter.stop(); // stop checking the stream for audio
 </code></pre>
 <h2 id="youtube-api">YouTube API</h2>
 <pre><code class="language-JavaScript">import eyeson, { YoutubeApi } from 'eyeson';
 
 const ytApi = new YoutubeApi(eyeson);
-// TODO...
-</code></pre>
-<h2 id="facebook-api">Facebook API</h2>
-<pre><code class="language-JavaScript">import eyeson, { FacebookApi } from 'eyeson';
-
-const fbApi = new FacebookApi(eyeson);
 // TODO...
 </code></pre>
 <h2 id="debounce-helper">Debounce Helper</h2>
@@ -397,7 +391,7 @@ much better performance and smoother look and feel.</p>
 
 			<aside class="copyright" role="note">
 				
-				&copy; 2021 eyeson GmbH &ndash;
+				&copy; 2022 eyeson GmbH &ndash;
 				
 				Documentation built with
 				<a href="https://www.gohugo.io" target="_blank">Hugo</a>

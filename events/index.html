@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>Events - eyeson JavaScript Library</title>
-    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="generator" content="Hugo 0.87.0" />
 
     
     <meta name="description" content="eyeson JavaScript Library">
@@ -144,7 +144,7 @@
         </div>
       
       <div class="name">
-        <strong>eyeson JavaScript Library <span class="version">1.6.2</span></strong>
+        <strong>eyeson JavaScript Library <span class="version">1.7.1</span></strong>
         
           <br>
           eyeson-team/js-docs
@@ -567,23 +567,10 @@ for many applications.</p>
   streamUrl
 }
 </code></pre>
-<h3 id="start_facebook">start_facebook</h3>
-<p>A user started a Facebook live stream.</p>
-<pre><code class="language-JavaScript">{
-  type: 'start_facebook',
-  streamUrl
-}
-</code></pre>
 <h3 id="stop_youtube">stop_youtube</h3>
 <p>Stop a YouTube live stream.</p>
 <pre><code class="language-JavaScript">eyes.send({
   type: 'stop_youtube'
-});
-</code></pre>
-<h3 id="stop_facebook">stop_facebook</h3>
-<p>Stop a Facebook live stream.</p>
-<pre><code class="language-JavaScript">eyeson.send({
-  type: 'stop_facebook'
 });
 </code></pre>
 <h3 id="stop_broadcasts">stop_broadcasts</h3>
@@ -597,11 +584,6 @@ for many applications.</p>
 <pre><code class="language-JavaScript">{
 }
 </code></pre>
-<h3 id="handle_facebook_error">handle_facebook_error</h3>
-<p>A Facebook error was received.</p>
-<pre><code class="language-JavaScript">{
-}
-</code></pre>
 <h3 id="broadcasts_update">broadcasts_update</h3>
 <p>One or more broadcast/s was/were updated.</p>
 <pre><code class="language-JavaScript">{
@@ -609,7 +591,7 @@ for many applications.</p>
   broadcasts: [
     {
       id,
-      platform: 'youtube' | 'facebook',
+      platform: 'youtube',
       player_url,
       user: { /* ... */ },
       room: { /* ... */ }
@@ -711,7 +693,7 @@ to toggle audio.</p>
 
 			<aside class="copyright" role="note">
 				
-				&copy; 2021 eyeson GmbH &ndash;
+				&copy; 2022 eyeson GmbH &ndash;
 				
 				Documentation built with
 				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
