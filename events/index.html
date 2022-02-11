@@ -450,10 +450,10 @@ for many applications.</p>
 </code></pre>
 <h3 id="send_chat">send_chat</h3>
 <p>Send a chat message.</p>
-<pre><code class="language-JavaScript">{
+<pre><code class="language-JavaScript">eyeson.send({
   type: 'send_chat',
   content
-}
+});
 </code></pre>
 <h2 id="joining-and-leaving-users">Joining and Leaving Users</h2>
 <h3 id="add_user">add_user</h3>
@@ -489,9 +489,7 @@ for many applications.</p>
 <h2 id="recording">Recording</h2>
 <h3 id="start_recording">start_recording</h3>
 <p>Start a recording. The message is delivered to all users.</p>
-<pre><code class="language-JavaScript">eyeson.send({
-  type: 'start_recording',
-});
+<pre><code class="language-JavaScript">eyeson.send({ type: 'start_recording' });
 </code></pre>
 <pre><code class="language-JavaScript">{
   type: 'start_recording',
@@ -499,9 +497,7 @@ for many applications.</p>
 </code></pre>
 <h3 id="stop_recording">stop_recording</h3>
 <p>Stop a recording. The message is delivered to all users.</p>
-<pre><code class="language-JavaScript">eyeson.send({
-  type: 'stop_recording',
-});
+<pre><code class="language-JavaScript">eyeson.send({ type: 'stop_recording' });
 </code></pre>
 <pre><code class="language-JavaScript">{
   type: 'stop_recording'
@@ -538,18 +534,16 @@ for many applications.</p>
 </code></pre>
 <h2 id="broadcast">Broadcast</h2>
 <h3 id="start_rtmp">start_rtmp</h3>
-<p>A user started an RTMP live stream.</p>
-<pre><code class="language-JavaScript">{
+<p>Start an RTMP live stream.</p>
+<pre><code class="language-JavaScript">eyeson.send({
   type: 'start_rtmp',
   url,
   key
-}
+});
 </code></pre>
 <h3 id="stop_rtmp">stop_rtmp</h3>
-<p>A user started an RTMP live stream.</p>
-<pre><code class="language-JavaScript">{
-  type: 'stop_rtmp'
-}
+<p>Stop an RTMP live stream.</p>
+<pre><code class="language-JavaScript">eyeson.send({ type: 'stop_rtmp' });
 </code></pre>
 <h3 id="publish_broadcast">publish_broadcast</h3>
 <p>Received after a broadcast has been published to the streaming platform.</p>
@@ -559,25 +553,21 @@ for many applications.</p>
 }
 </code></pre>
 <h3 id="start_youtube">start_youtube</h3>
-<p>A user started a YouTube live stream.</p>
-<pre><code class="language-JavaScript">{
+<p>Start a YouTube live stream.</p>
+<pre><code class="language-JavaScript">eyeson.send({
   type: 'start_youtube',
   broadcastId,
   playerUrl,
   streamUrl
-}
+});
 </code></pre>
 <h3 id="stop_youtube">stop_youtube</h3>
 <p>Stop a YouTube live stream.</p>
-<pre><code class="language-JavaScript">eyes.send({
-  type: 'stop_youtube'
-});
+<pre><code class="language-JavaScript">eyeson.send({ type: 'stop_youtube' });
 </code></pre>
 <h3 id="stop_broadcasts">stop_broadcasts</h3>
 <p>To stop all currently running broadcasts</p>
-<pre><code class="language-JavaScript">eyeson.send({
-  type: 'stop_broadcasts'
-});
+<pre><code class="language-JavaScript">eyeson.send({ type: 'stop_broadcasts' });
 </code></pre>
 <h3 id="handle_youtube_error">handle_youtube_error</h3>
 <p>A YouTube error was received.</p>
@@ -648,45 +638,70 @@ but has an additional guest flag set to <code>true</code>.</p>
 options.<br>
 It can also be used after devices are changed. See <a href="https://eyeson-team.github.io/js-docs/utilities/#device-manager"><code>Device Manager</code></a> for further information.<br>
 If <code>screen = true</code>, <code>video =&gt; false</code>.</p>
-<pre><code class="language-JavaScript">{
+<pre><code class="language-JavaScript">eyeson.send({
   type: 'start_stream',
   audio: true | false, // default: true
   video: true | false, // default: true
   screen: true | false // default: false
-}
+});
 </code></pre>
 <p>The <code>screen</code> parameter is used to switch from camera to screen stream.</p>
-<pre><code class="language-JavaScript">{
+<pre><code class="language-JavaScript">eyeson.send({
   type: 'start_stream',
   audio: true | false, // set true to add microphone
   screen: true
-}
+});
 </code></pre>
 <h3 id="change_stream">change_stream</h3>
 <p>Update a stream e.g. to toggle audio/video/screen.<br>
 <em>Note:</em> To avoid issues with some devices, you can use <a href="https://eyeson-team.github.io/js-docs/utilities/#streamhelpers"><code>StreamHelpers</code></a>
 to toggle audio.</p>
-<pre><code class="language-JavaScript">{
+<pre><code class="language-JavaScript">eyeson.send({
   type: 'change_stream',
   audio: true | false,
   video: true | false,
   screen: true | false
-}
+});
 </code></pre>
 <h3 id="toggle_camera">toggle_camera</h3>
 <p>Update the cameras facing mode on mobile devices.</p>
-<pre><code class="language-JavaScript">{
+<pre><code class="language-JavaScript">eyeson.send({
   type: 'toggle_camera',
   stream: localStream,
   facingMode: 'user' | 'environment'
-}
+});
 </code></pre>
 <h3 id="replace_stream">replace_stream</h3>
 <p>Replace current stream with any custom MediaStream.<br>
 <em>(First audio track and/or first video track with <code>readyState = &quot;live&quot;</code> are used)</em></p>
-<pre><code class="language-JavaScript">{
+<pre><code class="language-JavaScript">eyeson.send({
   type: 'replace_stream',
   stream
+});
+</code></pre>
+<h2 id="device-end-events">Device End Events</h2>
+<p>Since v1.7.1, eyeson detects broken microphone and camera streams.<br>
+Camera will be switched off and Microphone will automatically try changing to a
+new available device.</p>
+<h3 id="audio_device_ended">audio_device_ended</h3>
+<p>Broken microphone stream, changed to a new device.</p>
+<pre><code class="language-JavaScript">{
+  type: 'audio_device_ended',
+  newAudioDevice: '&lt;new audio device label&gt;' | undefined
+}
+</code></pre>
+<h3 id="video_device_ended">video_device_ended</h3>
+<p>Broken camera stream, video is muted.</p>
+<pre><code class="language-JavaScript">{
+  type: 'video_device_ended'
+}
+</code></pre>
+<h3 id="all_devices_ended">all_devices_ended</h3>
+<p>Broken microphone and camera streams, changed to a new audio device, video is
+muted.</p>
+<pre><code class="language-JavaScript">{
+  type: 'all_devices_ended',
+  newAudioDevice: '&lt;new audio device label&gt;' | undefined
 }
 </code></pre>
 
