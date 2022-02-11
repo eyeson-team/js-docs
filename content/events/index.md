@@ -209,10 +209,10 @@ Receive a chat message.
 Send a chat message.
 
 ```JavaScript
-{
+eyeson.send({
   type: 'send_chat',
   content
-}
+});
 ```
 
 ## Joining and Leaving Users
@@ -266,9 +266,7 @@ eyeson.send({ type: 'stop_presenting' };
 Start a recording. The message is delivered to all users.
 
 ```JavaScript
-eyeson.send({
-  type: 'start_recording',
-});
+eyeson.send({ type: 'start_recording' });
 ```
 
 ```JavaScript
@@ -282,9 +280,7 @@ eyeson.send({
 Stop a recording. The message is delivered to all users.
 
 ```JavaScript
-eyeson.send({
-  type: 'stop_recording',
-});
+eyeson.send({ type: 'stop_recording' });
 ```
 
 ```JavaScript
@@ -330,24 +326,22 @@ Received when the rooms recording state is updated.
 
 ### start\_rtmp
 
-A user started an RTMP live stream.
+Start an RTMP live stream.
 
 ```JavaScript
-{
+eyeson.send({
   type: 'start_rtmp',
   url,
   key
-}
+});
 ```
 
 ### stop\_rtmp
 
-A user started an RTMP live stream.
+Stop an RTMP live stream.
 
 ```JavaScript
-{
-  type: 'stop_rtmp'
-}
+eyeson.send({ type: 'stop_rtmp' });
 ```
 
 ### publish\_broadcast
@@ -363,15 +357,15 @@ Received after a broadcast has been published to the streaming platform.
 
 ### start\_youtube
 
-A user started a YouTube live stream.
+Start a YouTube live stream.
 
 ```JavaScript
-{
+eyeson.send({
   type: 'start_youtube',
   broadcastId,
   playerUrl,
   streamUrl
-}
+});
 ```
 
 ### stop\_youtube
@@ -379,9 +373,7 @@ A user started a YouTube live stream.
 Stop a YouTube live stream.
 
 ```JavaScript
-eyes.send({
-  type: 'stop_youtube'
-});
+eyeson.send({ type: 'stop_youtube' });
 ```
 
 ### stop\_broadcasts
@@ -389,9 +381,7 @@ eyes.send({
 To stop all currently running broadcasts
 
 ```JavaScript
-eyeson.send({
-  type: 'stop_broadcasts'
-});
+eyeson.send({ type: 'stop_broadcasts' });
 ```
 
 ### handle\_youtube\_error
@@ -493,22 +483,22 @@ It can also be used after devices are changed. See [`Device Manager`](/utilities
 If `screen = true`, `video => false`.
 
 ```JavaScript
-{
+eyeson.send({
   type: 'start_stream',
   audio: true | false, // default: true
   video: true | false, // default: true
   screen: true | false // default: false
-}
+});
 ```
 
 The `screen` parameter is used to switch from camera to screen stream.
 
 ```JavaScript
-{
+eyeson.send({
   type: 'start_stream',
   audio: true | false, // set true to add microphone
   screen: true
-}
+});
 ```
 
 ### change\_stream
@@ -518,12 +508,12 @@ _Note:_ To avoid issues with some devices, you can use [`StreamHelpers`](/utilit
 to toggle audio.
 
 ```JavaScript
-{
+eyeson.send({
   type: 'change_stream',
   audio: true | false,
   video: true | false,
   screen: true | false
-}
+});
 ```
 
 ### toggle\_camera
@@ -531,11 +521,11 @@ to toggle audio.
 Update the cameras facing mode on mobile devices.
 
 ```JavaScript
-{
+eyeson.send({
   type: 'toggle_camera',
   stream: localStream,
   facingMode: 'user' | 'environment'
-}
+});
 ```
 
 ### replace\_stream
@@ -544,9 +534,48 @@ Replace current stream with any custom MediaStream.\
 _(First audio track and/or first video track with `readyState = "live"` are used)_
 
 ```JavaScript
-{
+eyeson.send({
   type: 'replace_stream',
   stream
+});
+```
+
+## Device End Events
+
+Since v1.7.1, eyeson detects broken microphone and camera streams.\
+Camera will be switched off and Microphone will automatically try changing to a
+new available device.
+
+### audio\_device\_ended
+
+Broken microphone stream, changed to a new device.
+
+```JavaScript
+{
+  type: 'audio_device_ended',
+  newAudioDevice: '<new audio device label>' | undefined
+}
+```
+
+### video\_device\_ended
+
+Broken camera stream, video is muted.
+
+```JavaScript
+{
+  type: 'video_device_ended'
+}
+```
+
+### all\_devices\_ended
+
+Broken microphone and camera streams, changed to a new audio device, video is
+muted.
+
+```JavaScript
+{
+  type: 'all_devices_ended',
+  newAudioDevice: '<new audio device label>' | undefined
 }
 ```
 
