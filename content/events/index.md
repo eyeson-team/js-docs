@@ -177,6 +177,7 @@ index are provided.
   isPresenter: true | false,         // client is presenter
   hasPresenter: true | false,        // a participant is presenting
   videoSources: videoSources,        // list of video sources
+  userDimensions: {x, y, w, h}       // viewbox of current user on the remote stream
   hasVideoSources: true | false,     // session has video sources
   hasDesktopSources: true | false,   // session has desktop sources
   forwardedVideoMuted: true | false  // forwarded video (sfu) is muted
@@ -414,13 +415,43 @@ One or more broadcast/s was/were updated.
 
 ## Error Handling and Notifications
 
+### error
+
+Error events are thrown whenever a connection can not be established due to
+numerous reasons.
+
+- `devices`, `permission`, `not_readable` ... there's no device available
+  (note that audio device is required)
+- `session_in_use` ... a session with the same access-key is currently active
+- `meeting_locked` ... meeting is locked, no new pasrticipants are allowed
+- `abrupt_disconnect` ... critical connections have dropped unexpectedly and
+  could not get re-established automatically
+- `request_too_large` ... problem during Interactive Connectivity Establishment
+  (ICE) at the beginnging of the session
+- `ice_failed` ... the active peer connection dropped (no audio/video anymore).
+- `session_failed` ... generic reason whenever session fails unexpectedly and
+  has not been ablo to re-connect
+
+```JavaScript
+{
+  type: 'error',
+  name
+}
+```
+
+### warning
+
 The following warnings are sent by the eyeson room.
 
 - `ice_disconnected` ... Interactive Connectivity Establishment (ICE) protocol
   reports the users connection to be gone. You might want to show your client a
   "offline" warning here.
+- `error:comapi` ... request to ComAPI failed
+- `chat_message_too_long` ... chat message size is currently limited to 32 kB
+  (incl. message headers)
+- `error_NotReadableError`, `error_DevicesNotFoundError`, `error_NotFoundError`
+  are reported if automatic device mediastream allocation failes
 
-### warning
 
 An issue described by `name` was detected.
 
