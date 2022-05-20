@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>Events - eyeson JavaScript Library</title>
-    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="generator" content="Hugo 0.87.0" />
 
     
     <meta name="description" content="eyeson JavaScript Library">
@@ -428,6 +428,7 @@ index are provided.</p>
   isPresenter: true | false,         // client is presenter
   hasPresenter: true | false,        // a participant is presenting
   videoSources: videoSources,        // list of video sources
+  userDimensions: {x, y, w, h}       // viewbox of current user on the remote stream
   hasVideoSources: true | false,     // session has video sources
   hasDesktopSources: true | false,   // session has desktop sources
   forwardedVideoMuted: true | false  // forwarded video (sfu) is muted
@@ -590,13 +591,39 @@ for many applications.</p>
 }
 </code></pre>
 <h2 id="error-handling-and-notifications">Error Handling and Notifications</h2>
+<h3 id="error">error</h3>
+<p>Error events are thrown whenever a connection can not be established due to
+numerous reasons.</p>
+<ul>
+<li><code>devices</code>, <code>permission</code>, <code>not_readable</code> &hellip; there&rsquo;s no device available
+(note that audio device is required)</li>
+<li><code>session_in_use</code> &hellip; a session with the same access-key is currently active</li>
+<li><code>meeting_locked</code> &hellip; meeting is locked, no new pasrticipants are allowed</li>
+<li><code>abrupt_disconnect</code> &hellip; critical connections have dropped unexpectedly and
+could not get re-established automatically</li>
+<li><code>request_too_large</code> &hellip; problem during Interactive Connectivity Establishment
+(ICE) at the beginnging of the session</li>
+<li><code>ice_failed</code> &hellip; the active peer connection dropped (no audio/video anymore).</li>
+<li><code>session_failed</code> &hellip; generic reason whenever session fails unexpectedly and
+has not been ablo to re-connect</li>
+</ul>
+<pre><code class="language-JavaScript">{
+  type: 'error',
+  name
+}
+</code></pre>
+<h3 id="warning">warning</h3>
 <p>The following warnings are sent by the eyeson room.</p>
 <ul>
 <li><code>ice_disconnected</code> &hellip; Interactive Connectivity Establishment (ICE) protocol
 reports the users connection to be gone. You might want to show your client a
 &ldquo;offline&rdquo; warning here.</li>
+<li><code>error:comapi</code> &hellip; request to ComAPI failed</li>
+<li><code>chat_message_too_long</code> &hellip; chat message size is currently limited to 32 kB
+(incl. message headers)</li>
+<li><code>error_NotReadableError</code>, <code>error_DevicesNotFoundError</code>, <code>error_NotFoundError</code>
+are reported if automatic device mediastream allocation failes</li>
 </ul>
-<h3 id="warning">warning</h3>
 <p>An issue described by <code>name</code> was detected.</p>
 <pre><code class="language-JavaScript">{
   type: 'warning',
