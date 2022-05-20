@@ -111,6 +111,25 @@ const ytApi = new YoutubeApi(eyeson);
 // TODO...
 ```
 
+## Connection Info
+
+Display a connection quality indicator based on the provided data. More details
+at [Techblog Connection Info].
+
+```JavaScript
+eyeson.onEvent(event => {
+    if (event.type === 'statistics_ready') {
+        event.statistics.onUpdate(showStatistics);
+    }
+});
+
+function showStatistics(stats) {
+    /*...*/
+}
+
+eyeson.start(/*...*/);
+```
+
 ## Debounce Helper
 
 Efficiently execute a function but not more often than the given wait time (in
@@ -128,3 +147,5 @@ want to act on a browser window resize, simply listening on the event may
 execute a lot. When wrapping your handler by debounce you may execute it
 only every 100ms, still providing a real-time-feeling for your user but with
 much better performance and smoother look and feel.
+
+[Techblog Connection Info]: https://techblog.eyeson.team/posts/connection-info/
