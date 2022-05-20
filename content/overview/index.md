@@ -39,6 +39,9 @@ eyeson.onEvent(event => {
 eyeson.connect(token);                      // prepare connection
 ```
 
+_Good to know:_ calling `eyeson.connect` will keep the meeting alive until the
+user actually joins. This can be especially useful to create a pre-meeting part.
+
 Since v1.6.2 you can even start or join with any custom MediaStream
 
 ```JavaScript
