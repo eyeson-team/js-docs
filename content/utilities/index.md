@@ -45,6 +45,7 @@ deviceManager.setAudioInput(deviceId); // switch microphone
 deviceManager.setAudioOutput(sinkId); // switch audio output, speakers
 deviceManager.storeConstraints(); // store current selection
 deviceManager.removeListener(changeHandler); // remove listeners if registered via onChange
+deviceManager.updateWithOptions(options, isMobile); // options = { audio: true/false, video: true/false, eco: true/false }, isMobile defaults to false
 deviceManager.stop(); // stop checking device changes
 ```
 
