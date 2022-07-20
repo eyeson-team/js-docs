@@ -25,6 +25,15 @@ API and is used at [eyeson.team].
   Angular, or Elm, with or without using additional event handling libraries
   like Redux or RxJS.
 
+
+Use npm or yarn to add the package to your JavaScript project.
+
+```shell
+$ npm i --save eyeson
+- or -
+$ yarn add eyeson
+```
+
 You can start your own video conferencing app with a few lines of JavaScript:
 
 ```js
