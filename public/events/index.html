@@ -144,7 +144,7 @@
         </div>
       
       <div class="name">
-        <strong>eyeson JavaScript Library <span class="version">1.8.1</span></strong>
+        <strong>eyeson JavaScript Library <span class="version">1.8.3</span></strong>
         
           <br>
           eyeson-team/js-docs
@@ -644,11 +644,12 @@ the current eyeson room meeting. This can be used to provide a direct quick
 join or guest access. The guest_access_token will be provided with the
 room information.</p>
 <pre><code class="language-JavaScript">eyeson.send({
-  type:  'request_guest_user',
-  api:   this.eyeson.config.api, // set api as eyeson is not yet initialized
+  type: 'request_guest_user',
+  api: this.eyeson.config.api, // set api as eyeson is not yet initialized
   token, // guest_access_token
   name,
-  email  // optional
+  email, // optional
+  locale // optional, preferred language code (en, de, fr)
 });
 </code></pre>
 <h3 id="guest_user">guest_user</h3>
