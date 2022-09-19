@@ -484,11 +484,12 @@ room information.
 
 ```JavaScript
 eyeson.send({
-  type:  'request_guest_user',
-  api:   this.eyeson.config.api, // set api as eyeson is not yet initialized
+  type: 'request_guest_user',
+  api: this.eyeson.config.api, // set api as eyeson is not yet initialized
   token, // guest_access_token
   name,
-  email  // optional
+  email, // optional
+  locale // optional, preferred language code (en, de, fr)
 });
 ```
 
