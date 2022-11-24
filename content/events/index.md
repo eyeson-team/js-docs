@@ -415,11 +415,10 @@ One or more broadcast/s was/were updated.
 
 ## Snapshot
 
-Create a snapshot. In order to avoid exploiting this feature, use
-`throttledSend` instead of `send`.
+Create a snapshot.
 
 ```JavaScript
-eyeson.throttledSend({ type: 'snapshot' });
+eyeson.send({ type: 'snapshot' });
 ```
 
 After a snapshot was created, all clients receive the `snapshot_update` event.\
