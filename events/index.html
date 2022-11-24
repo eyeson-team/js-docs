@@ -144,7 +144,7 @@
         </div>
       
       <div class="name">
-        <strong>eyeson JavaScript Library <span class="version">1.8.3</span></strong>
+        <strong>eyeson JavaScript Library <span class="version">1.8.4</span></strong>
         
           <br>
           eyeson-team/js-docs
@@ -585,6 +585,27 @@ for many applications.</p>
       platform: 'youtube',
       player_url,
       user: { /* ... */ },
+      room: { /* ... */ }
+    }
+  ]
+}
+</code></pre>
+<h2 id="snapshot">Snapshot</h2>
+<p>Create a snapshot. In order to avoid exploiting this feature, use
+<code>throttledSend</code> instead of <code>send</code>.</p>
+<pre><code class="language-JavaScript">eyeson.throttledSend({ type: 'snapshot' });
+</code></pre>
+<p>After a snapshot was created, all clients receive the <code>snapshot_update</code> event.<br>
+Note that the download link expires after a certain time.</p>
+<pre><code class="language-JavaScript">{
+  type: 'snapshot_update',
+  snapshots: [
+    {
+      created_at,
+      creator: { /* ... */ },
+      id,
+      links: { download }
+      name,
       room: { /* ... */ }
     }
   ]
