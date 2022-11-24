@@ -591,9 +591,8 @@ for many applications.</p>
 }
 </code></pre>
 <h2 id="snapshot">Snapshot</h2>
-<p>Create a snapshot. In order to avoid exploiting this feature, use
-<code>throttledSend</code> instead of <code>send</code>.</p>
-<pre><code class="language-JavaScript">eyeson.throttledSend({ type: 'snapshot' });
+<p>Create a snapshot.</p>
+<pre><code class="language-JavaScript">eyeson.send({ type: 'snapshot' });
 </code></pre>
 <p>After a snapshot was created, all clients receive the <code>snapshot_update</code> event.<br>
 Note that the download link expires after a certain time.</p>
