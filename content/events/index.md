@@ -413,6 +413,34 @@ One or more broadcast/s was/were updated.
 }
 ```
 
+## Snapshot
+
+Create a snapshot. In order to avoid exploiting this feature, use
+`throttledSend` instead of `send`.
+
+```JavaScript
+eyeson.throttledSend({ type: 'snapshot' });
+```
+
+After a snapshot was created, all clients receive the `snapshot_update` event.\
+Note that the download link expires after a certain time.
+
+```JavaScript
+{
+  type: 'snapshot_update',
+  snapshots: [
+    {
+      created_at,
+      creator: { /* ... */ },
+      id,
+      links: { download }
+      name,
+      room: { /* ... */ }
+    }
+  ]
+}
+```
+
 ## Error Handling and Notifications
 
 ### error
