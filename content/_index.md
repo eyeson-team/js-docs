@@ -6,7 +6,7 @@ weight: 0
 ---
 
 This library provides a convenient interface between your browser and the eyeson
-API and is used at [eyeson.team].
+API and is used at [eyeson].
 
 - **Simple and powerful**: All you need is an access key. The high level
   abstractions allow easy control of video and audio streams, chat, screen
@@ -65,5 +65,5 @@ sure the eyeson services will fit your particular needs, shoot us a
 [message](mailto:developers@eyeson.team) or open a [GitHub issue]. We're happy
 to help.
 
-[eyeson.team]: https://eyeson.team/ "eyeson Team Video Meetings"
+[eyeson]: https://eyeson.team/ "eyeson Video Meetings"
 [GitHub issue]: https://github.com/eyeson-team/js-docs/issues

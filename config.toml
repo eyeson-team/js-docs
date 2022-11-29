@@ -13,7 +13,7 @@ googleAnalytics = ""
 
 [params]
 	# General information
-	author = "eyeson Team"
+	author = "eyeson"
 	description = "eyeson JavaScript Library"
 	copyright = "eyeson GmbH"
 
