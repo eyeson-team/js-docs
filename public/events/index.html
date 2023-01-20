@@ -691,14 +691,15 @@ If <code>screen = true</code>, <code>video =&gt; false</code>.</p>
   type: 'start_stream',
   audio: true | false, // default: true
   video: true | false, // default: true
-  screen: true | false // default: false
+  screen: true | false, // default: false
 });
 </code></pre>
 <p>The <code>screen</code> parameter is used to switch from camera to screen stream.</p>
 <pre><code class="language-JavaScript">eyeson.send({
   type: 'start_stream',
   audio: true | false, // set true to add microphone
-  screen: true
+  screen: true,
+  surface: null | 'monitor' | 'window' | 'browser' // optional; used only if screen=true
 });
 </code></pre>
 <h3 id="change_stream">change_stream</h3>
@@ -709,7 +710,8 @@ to toggle audio.</p>
   type: 'change_stream',
   audio: true | false,
   video: true | false,
-  screen: true | false
+  screen: true | false,
+  surface: null | 'monitor' | 'window' | 'browser' // optional; used only if screen=true
 });
 </code></pre>
 <h3 id="toggle_camera">toggle_camera</h3>
