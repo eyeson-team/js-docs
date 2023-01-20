@@ -73,6 +73,9 @@ FeatureDetector.canToggleCamera();
 FeatureDetector.canFullscreen();
 FeatureDetector.canPip();
 FeatureDetector.canSFU();
+FeatureDetector.canVirtualBackground();
+FeatureDetector.canChangeAudioOutput();
+FeatureDetector.canChooseDisplaySurface();
 ```
 
 ## StreamHelpers

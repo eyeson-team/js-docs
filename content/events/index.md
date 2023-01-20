@@ -456,6 +456,7 @@ numerous reasons.
 - `request_too_large` ... problem during Interactive Connectivity Establishment
   (ICE) at the beginnging of the session
 - `ice_failed` ... the active peer connection dropped (no audio/video anymore).
+- `ice_error` ... unable to establish the peer connection to meeting server
 - `session_failed` ... generic reason whenever session fails unexpectedly and
   has not been ablo to re-connect
 
@@ -597,6 +598,14 @@ eyeson.send({
   type: 'replace_stream',
   stream
 });
+```
+
+### change\_screen\_video
+
+Trigger screenshare selection during screen cam. [Further information](https://techblog.eyeson.team/posts/screen-cam/).
+
+```JavaScript
+eyeson.send({ type: 'change_screen_video' });
 ```
 
 ## Device End Events
