@@ -547,7 +547,7 @@ eyeson.send({
   type: 'start_stream',
   audio: true | false, // default: true
   video: true | false, // default: true
-  screen: true | false // default: false
+  screen: true | false, // default: false
 });
 ```
 
@@ -557,7 +557,8 @@ The `screen` parameter is used to switch from camera to screen stream.
 eyeson.send({
   type: 'start_stream',
   audio: true | false, // set true to add microphone
-  screen: true
+  screen: true,
+  surface: null | 'monitor' | 'window' | 'browser' // optional; used only if screen=true
 });
 ```
 
@@ -572,7 +573,8 @@ eyeson.send({
   type: 'change_stream',
   audio: true | false,
   video: true | false,
-  screen: true | false
+  screen: true | false,
+  surface: null | 'monitor' | 'window' | 'browser' // optional; used only if screen=true
 });
 ```
 
