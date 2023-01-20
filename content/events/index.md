@@ -552,6 +552,7 @@ eyeson.send({
 ```
 
 The `screen` parameter is used to switch from camera to screen stream.
+Use the `surface` option to pre-select the desired options. Skip or set `null` for browser default. Detect availablility for UI with `FeatureDetector.canChooseDisplaySurface()`. [More info](https://developer.chrome.com/docs/web-platform/screen-sharing-controls/#displaySurface).
 
 ```JavaScript
 eyeson.send({
