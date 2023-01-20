@@ -694,7 +694,8 @@ If <code>screen = true</code>, <code>video =&gt; false</code>.</p>
   screen: true | false, // default: false
 });
 </code></pre>
-<p>The <code>screen</code> parameter is used to switch from camera to screen stream.</p>
+<p>The <code>screen</code> parameter is used to switch from camera to screen stream.
+Use the <code>surface</code> option to pre-select the desired options. Skip or set <code>null</code> for browser default. Detect availablility for UI with <code>FeatureDetector.canChooseDisplaySurface()</code>. <a href="https://developer.chrome.com/docs/web-platform/screen-sharing-controls/#displaySurface">More info</a>.</p>
 <pre><code class="language-JavaScript">eyeson.send({
   type: 'start_stream',
   audio: true | false, // set true to add microphone
