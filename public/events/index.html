@@ -144,7 +144,7 @@
         </div>
       
       <div class="name">
-        <strong>eyeson JavaScript Library <span class="version">1.8.4</span></strong>
+        <strong>eyeson JavaScript Library <span class="version">1.8.5</span></strong>
         
           <br>
           eyeson-team/js-docs
@@ -624,6 +624,7 @@ could not get re-established automatically</li>
 <li><code>request_too_large</code> &hellip; problem during Interactive Connectivity Establishment
 (ICE) at the beginnging of the session</li>
 <li><code>ice_failed</code> &hellip; the active peer connection dropped (no audio/video anymore).</li>
+<li><code>ice_error</code> &hellip; unable to establish the peer connection to meeting server</li>
 <li><code>session_failed</code> &hellip; generic reason whenever session fails unexpectedly and
 has not been ablo to re-connect</li>
 </ul>
@@ -727,6 +728,10 @@ to toggle audio.</p>
   stream
 });
 </code></pre>
+<h3 id="change_screen_video">change_screen_video</h3>
+<p>Trigger screenshare selection during screen cam. <a href="https://techblog.eyeson.team/posts/screen-cam/">Further information</a>.</p>
+<pre><code class="language-JavaScript">eyeson.send({ type: 'change_screen_video' });
+</code></pre>
 <h2 id="device-end-events">Device End Events</h2>
 <p>Since v1.7.1, eyeson detects broken microphone and camera streams.<br>
 Camera will be switched off and Microphone will automatically try changing to a
@@ -756,7 +761,7 @@ muted.</p>
 
 			<aside class="copyright" role="note">
 				
-				&copy; 2022 eyeson GmbH &ndash;
+				&copy; 2023 eyeson GmbH &ndash;
 				
 				Documentation built with
 				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
