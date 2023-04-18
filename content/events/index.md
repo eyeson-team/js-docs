@@ -3,14 +3,14 @@ title: "Events"
 date: 2017-08-04T16:29:43+02:00
 ---
 
-Events are the core data construct provided by the eyeson library. Most
+Events are the core data construct provided by the Eyeson library. Most
 interactions with the room will be processed through events. The identifying
 attribute of an event is its `type`. _When listening for events the most common
 thing you want to do is to respond to an event, commonly distinguished by
 conditionals, a switch statement or a factory._
 
 {{< note title="Note" >}}
-eyeson js library will handle some additional events for you in order to
+Eyeson js library will handle some additional events for you in order to
 provide a higher level abstraction and for ease of use you will not receive
 those events.
 {{< /note >}}
@@ -19,7 +19,7 @@ those events.
 
 ### connection
 
-Contains update information about your connection status to the eyeson api.
+Contains update information about your connection status to the Eyeson API.
 
 ```Javascript
 {
@@ -72,14 +72,14 @@ contains information about the state of the current room.
 ```
 
 {{< note title="Note" >}}
-An eyeson room server and user may not be available on the first request
+An Eyeson room server and user may not be available on the first request
 therefore there a three status flags included in the response above. Room ready
 and user ready status, as well as the top level ready flag combining those two.
 {{< /note >}}
 
 ### room\_ready
 
-When you establish a real time connection but the eyeson room isn't ready at
+When you establish a real time connection but the Eyeson room isn't ready at
 that point (i.e. `room_setup` content ready is false) you'll receive this
 separate message once the room is ready.
 
@@ -98,7 +98,7 @@ separate message once the room is ready.
 
 Fetch the room details, provides the room and user information and is also
 initially received when a room changes its status to `ready`. The event can be
-send to the eyeson room and will return with same type when a response is
+send to the Eyeson room and will return with same type when a response is
 received.
 
 ```JavaScript
@@ -220,7 +220,7 @@ eyeson.send({
 
 ### add\_user
 
-A new user has joined the eyeson room.
+A new user has joined the Eyeson room.
 
 ```JavaScript
 {
@@ -237,7 +237,7 @@ A new user has joined the eyeson room.
 
 ### remove\_user
 
-A user has left the eyeson room.
+A user has left the Eyeson room.
 
 ```JavaScript
 {
@@ -469,7 +469,7 @@ numerous reasons.
 
 ### warning
 
-The following warnings are sent by the eyeson room.
+The following warnings are sent by the Eyeson room.
 
 - `ice_disconnected` ... Interactive Connectivity Establishment (ICE) protocol
   reports the users connection to be gone. You might want to show your client a
@@ -506,14 +506,14 @@ An issue described by `name` has been resolved.
 ### request\_guest\_user
 
 With a given guest\_access\_token you can quickly create temporary users for
-the current eyeson room meeting. This can be used to provide a direct quick
+the current Eyeson room meeting. This can be used to provide a direct quick
 join or guest access. The guest\_access\_token will be provided with the
 room information.
 
 ```JavaScript
 eyeson.send({
   type: 'request_guest_user',
-  api: this.eyeson.config.api, // set api as eyeson is not yet initialized
+  api: this.eyeson.config.api, // set api as Eyeson is not yet initialized
   token, // guest_access_token
   name,
   email, // optional
@@ -613,7 +613,7 @@ eyeson.send({ type: 'change_screen_video' });
 
 ## Device End Events
 
-Since v1.7.1, eyeson detects broken microphone and camera streams.\
+Since v1.7.1, Eyeson detects broken microphone and camera streams.\
 Camera will be switched off and Microphone will automatically try changing to a
 new available device.
 

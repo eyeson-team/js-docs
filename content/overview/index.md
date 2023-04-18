@@ -1,10 +1,10 @@
 ---
 title: "Overview"
-date: 2017-08-04T16:32:40+02:00
+date: 2017-08-04T16:16:40+02:00
 ---
 
 The library is globally available via `eyeson` and lets you connect to any
-eyeson room.
+Eyeson room.
 
 ## Public Interface
 
@@ -13,17 +13,17 @@ Two of the most common things you want to do with the library are:
 - Let a user join a room
 - Respond to things happening inside the room
 
-In order to receive eyeson room events register a listener using the `onEvent`
+In order to receive Eyeson room events register a listener using the `onEvent`
 method provided. Remember to register a handler before starting a room
 otherwise you might miss some initial events.
 
 ```JavaScript
 const handleEvent = function() { /* ... */ };
 
-eyeson.onEvent(handleEvent);  // attach listener for eyeson events
+eyeson.onEvent(handleEvent);  // attach listener for Eyeson events
 eyeson.start(token);          // initiate and join the room
 eyeson.destroy();             // destroy and cleanup a session
-eyeson.offEvent(handleEvent); // remove listener for eyeson events
+eyeson.offEvent(handleEvent); // remove listener for Eyeson events
 ```
 
 _Note_ that `start` is a convenient shorthand which handles connecting, fetching
@@ -50,7 +50,7 @@ eyeson.start('<access_key>', { stream });
 
 ## Using the EventTarget Web API
 
-If you want to handle the eyeson events via the [EventTarget API] you can use
+If you want to handle the Eyeson events via the [EventTarget API] you can use
 the following snippet.
 
 ```JavaScript
@@ -78,7 +78,7 @@ Find more details about the types of events to be received and send in the
 
 ## Configuration
 
-Since v1.5.1 eyeson supports SFU mode in Safari (desktop and mobile). If your
+Since v1.5.1 Eyeson supports SFU mode in Safari (desktop and mobile). If your
 application encounters any issues, you can switch back to previous behaviour.
 
 ```JavaScript

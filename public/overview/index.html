@@ -9,11 +9,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>Overview - eyeson JavaScript Library</title>
+    <title>Overview - Eyeson JavaScript Library</title>
     <meta name="generator" content="Hugo 0.87.0" />
 
     
-    <meta name="description" content="eyeson JavaScript Library">
+    <meta name="description" content="Eyeson JavaScript Library">
     
     <link rel="canonical" href="https://eyeson-team.github.io/js-docs/overview/">
     
@@ -21,9 +21,9 @@
     
 
     <meta property="og:url" content="https://eyeson-team.github.io/js-docs/overview/">
-    <meta property="og:title" content="eyeson JavaScript Library">
+    <meta property="og:title" content="Eyeson JavaScript Library">
     <meta property="og:image" content="https://eyeson-team.github.io/images/logo.png">
-    <meta name="apple-mobile-web-app-title" content="eyeson JavaScript Library">
+    <meta name="apple-mobile-web-app-title" content="Eyeson JavaScript Library">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
@@ -144,7 +144,7 @@
         </div>
       
       <div class="name">
-        <strong>eyeson JavaScript Library <span class="version">1.8.5</span></strong>
+        <strong>Eyeson JavaScript Library <span class="version">1.8.5</span></strong>
         
           <br>
           eyeson-team/js-docs
@@ -181,9 +181,9 @@
 
 
 
-<a  title="eyeson JavaScript Library" href="https://eyeson-team.github.io/js-docs/">
+<a  title="Eyeson JavaScript Library" href="https://eyeson-team.github.io/js-docs/">
 	
-	eyeson JavaScript Library
+	Eyeson JavaScript Library
 </a>
 
 
@@ -294,22 +294,22 @@
 			<h1>Overview </h1>
 
 			<p>The library is globally available via <code>eyeson</code> and lets you connect to any
-eyeson room.</p>
+Eyeson room.</p>
 <h2 id="public-interface">Public Interface</h2>
 <p>Two of the most common things you want to do with the library are:</p>
 <ul>
 <li>Let a user join a room</li>
 <li>Respond to things happening inside the room</li>
 </ul>
-<p>In order to receive eyeson room events register a listener using the <code>onEvent</code>
+<p>In order to receive Eyeson room events register a listener using the <code>onEvent</code>
 method provided. Remember to register a handler before starting a room
 otherwise you might miss some initial events.</p>
 <pre><code class="language-JavaScript">const handleEvent = function() { /* ... */ };
 
-eyeson.onEvent(handleEvent);  // attach listener for eyeson events
+eyeson.onEvent(handleEvent);  // attach listener for Eyeson events
 eyeson.start(token);          // initiate and join the room
 eyeson.destroy();             // destroy and cleanup a session
-eyeson.offEvent(handleEvent); // remove listener for eyeson events
+eyeson.offEvent(handleEvent); // remove listener for Eyeson events
 </code></pre>
 <p><em>Note</em> that <code>start</code> is a convenient shorthand which handles connecting, fetching
 initial data and joining the room for you. If you want more granular control
@@ -327,7 +327,7 @@ user actually joins. This can be especially useful to create a pre-meeting part.
 <pre><code class="language-JavaScript">eyeson.start('&lt;access_key&gt;', { stream });
 </code></pre>
 <h2 id="using-the-eventtarget-web-api">Using the EventTarget Web API</h2>
-<p>If you want to handle the eyeson events via the <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget" title="EventTarget API Documentation">EventTarget API</a> you can use
+<p>If you want to handle the Eyeson events via the <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget" title="EventTarget API Documentation">EventTarget API</a> you can use
 the following snippet.</p>
 <pre><code class="language-JavaScript">eyeson.onEvent(event =&gt; {
   window.dispatchEvent(new CustomEvent('eyeson', { detail: event }));
@@ -346,7 +346,7 @@ way actions can be triggered from the user&rsquo;s end.</p>
 <p>Find more details about the types of events to be received and send in the
 <a href="https://eyeson-team.github.io/js-docs/events/">events section</a>.</p>
 <h2 id="configuration">Configuration</h2>
-<p>Since v1.5.1 eyeson supports SFU mode in Safari (desktop and mobile). If your
+<p>Since v1.5.1 Eyeson supports SFU mode in Safari (desktop and mobile). If your
 application encounters any issues, you can switch back to previous behaviour.</p>
 <pre><code class="language-JavaScript">eyeson.config.allowSafariSFU = false; // default is true
 </code></pre>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on eyeson JavaScript Library</title>
+    <title>Categories on Eyeson JavaScript Library</title>
     <link>https://eyeson-team.github.io/js-docs/categories/</link>
-    <description>Recent content in Categories on eyeson JavaScript Library</description>
+    <description>Recent content in Categories on Eyeson JavaScript Library</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://eyeson-team.github.io/js-docs/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>

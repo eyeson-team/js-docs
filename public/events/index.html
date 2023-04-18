@@ -9,11 +9,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>Events - eyeson JavaScript Library</title>
+    <title>Events - Eyeson JavaScript Library</title>
     <meta name="generator" content="Hugo 0.87.0" />
 
     
-    <meta name="description" content="eyeson JavaScript Library">
+    <meta name="description" content="Eyeson JavaScript Library">
     
     <link rel="canonical" href="https://eyeson-team.github.io/js-docs/events/">
     
@@ -21,9 +21,9 @@
     
 
     <meta property="og:url" content="https://eyeson-team.github.io/js-docs/events/">
-    <meta property="og:title" content="eyeson JavaScript Library">
+    <meta property="og:title" content="Eyeson JavaScript Library">
     <meta property="og:image" content="https://eyeson-team.github.io/images/logo.png">
-    <meta name="apple-mobile-web-app-title" content="eyeson JavaScript Library">
+    <meta name="apple-mobile-web-app-title" content="Eyeson JavaScript Library">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
@@ -144,7 +144,7 @@
         </div>
       
       <div class="name">
-        <strong>eyeson JavaScript Library <span class="version">1.8.5</span></strong>
+        <strong>Eyeson JavaScript Library <span class="version">1.8.5</span></strong>
         
           <br>
           eyeson-team/js-docs
@@ -181,9 +181,9 @@
 
 
 
-<a  title="eyeson JavaScript Library" href="https://eyeson-team.github.io/js-docs/">
+<a  title="Eyeson JavaScript Library" href="https://eyeson-team.github.io/js-docs/">
 	
-	eyeson JavaScript Library
+	Eyeson JavaScript Library
 </a>
 
 
@@ -293,20 +293,20 @@
 		<div class="wrapper">
 			<h1>Events </h1>
 
-			<p>Events are the core data construct provided by the eyeson library. Most
+			<p>Events are the core data construct provided by the Eyeson library. Most
 interactions with the room will be processed through events. The identifying
 attribute of an event is its <code>type</code>. <em>When listening for events the most common
 thing you want to do is to respond to an event, commonly distinguished by
 conditionals, a switch statement or a factory.</em></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>eyeson js library will handle some additional events for you in order to
+<p>Eyeson js library will handle some additional events for you in order to
 provide a higher level abstraction and for ease of use you will not receive
 those events.</p>
 </div>
 <h2 id="connection-and-setup">Connection and Setup</h2>
 <h3 id="connection">connection</h3>
-<p>Contains update information about your connection status to the eyeson api.</p>
+<p>Contains update information about your connection status to the Eyeson API.</p>
 <pre><code class="language-Javascript">{
   type: 'connection',
   connectionStatus: 'fetch_room' | 'connected' | 'access_denied'
@@ -353,12 +353,12 @@ contains information about the state of the current room.</p>
 </code></pre>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>An eyeson room server and user may not be available on the first request
+<p>An Eyeson room server and user may not be available on the first request
 therefore there a three status flags included in the response above. Room ready
 and user ready status, as well as the top level ready flag combining those two.</p>
 </div>
 <h3 id="room_ready">room_ready</h3>
-<p>When you establish a real time connection but the eyeson room isn&rsquo;t ready at
+<p>When you establish a real time connection but the Eyeson room isn&rsquo;t ready at
 that point (i.e. <code>room_setup</code> content ready is false) you&rsquo;ll receive this
 separate message once the room is ready.</p>
 <pre><code class="language-JavaScript">{
@@ -373,7 +373,7 @@ separate message once the room is ready.</p>
 <h3 id="fetch_room">fetch_room</h3>
 <p>Fetch the room details, provides the room and user information and is also
 initially received when a room changes its status to <code>ready</code>. The event can be
-send to the eyeson room and will return with same type when a response is
+send to the Eyeson room and will return with same type when a response is
 received.</p>
 <pre><code class="language-JavaScript">eyeson.send({ type: 'fetch_room' });
 </code></pre>
@@ -458,7 +458,7 @@ for many applications.</p>
 </code></pre>
 <h2 id="joining-and-leaving-users">Joining and Leaving Users</h2>
 <h3 id="add_user">add_user</h3>
-<p>A new user has joined the eyeson room.</p>
+<p>A new user has joined the Eyeson room.</p>
 <pre><code class="language-JavaScript">{
   type: 'add_user',
   user: {
@@ -471,7 +471,7 @@ for many applications.</p>
 }
 </code></pre>
 <h3 id="remove_user">remove_user</h3>
-<p>A user has left the eyeson room.</p>
+<p>A user has left the Eyeson room.</p>
 <pre><code class="language-JavaScript">{
   type: 'remove_user',
   userId,
@@ -634,7 +634,7 @@ has not been ablo to re-connect</li>
 }
 </code></pre>
 <h3 id="warning">warning</h3>
-<p>The following warnings are sent by the eyeson room.</p>
+<p>The following warnings are sent by the Eyeson room.</p>
 <ul>
 <li><code>ice_disconnected</code> &hellip; Interactive Connectivity Establishment (ICE) protocol
 reports the users connection to be gone. You might want to show your client a
@@ -661,12 +661,12 @@ are reported if automatic device mediastream allocation failes</li>
 <h2 id="quick-join--guest-access">Quick Join / Guest Access</h2>
 <h3 id="request_guest_user">request_guest_user</h3>
 <p>With a given guest_access_token you can quickly create temporary users for
-the current eyeson room meeting. This can be used to provide a direct quick
+the current Eyeson room meeting. This can be used to provide a direct quick
 join or guest access. The guest_access_token will be provided with the
 room information.</p>
 <pre><code class="language-JavaScript">eyeson.send({
   type: 'request_guest_user',
-  api: this.eyeson.config.api, // set api as eyeson is not yet initialized
+  api: this.eyeson.config.api, // set api as Eyeson is not yet initialized
   token, // guest_access_token
   name,
   email, // optional
@@ -736,7 +736,7 @@ to toggle audio.</p>
 <pre><code class="language-JavaScript">eyeson.send({ type: 'change_screen_video' });
 </code></pre>
 <h2 id="device-end-events">Device End Events</h2>
-<p>Since v1.7.1, eyeson detects broken microphone and camera streams.<br>
+<p>Since v1.7.1, Eyeson detects broken microphone and camera streams.<br>
 Camera will be switched off and Microphone will automatically try changing to a
 new available device.</p>
 <h3 id="audio_device_ended">audio_device_ended</h3>
@@ -764,7 +764,7 @@ muted.</p>
 
 			<aside class="copyright" role="note">
 				
-				&copy; 2023 eyeson GmbH &ndash;
+				&copy; 2023 Eyeson GmbH &ndash;
 				
 				Documentation built with
 				<a href="https://www.gohugo.io" target="_blank">Hugo</a>

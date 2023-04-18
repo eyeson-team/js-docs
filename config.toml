@@ -1,11 +1,13 @@
 baseurl = "/"
 languageCode = "en-us"
-title = "eyeson JavaScript Library"
+title = "Eyeson JavaScript Library"
 theme = "hugo-material-docs"
 metadataformat = "yaml"
 canonifyurls = true
 # Enable Google Analytics by entering your tracking id
 googleAnalytics = ""
+
+disableKinds = ["taxonomy", "taxonomyTerm"]
 
 [markup]
   [markup.highlight]
@@ -13,8 +15,8 @@ googleAnalytics = ""
 
 [params]
 	# General information
-	author = "eyeson"
-	description = "eyeson JavaScript Library"
+	author = "Eyeson"
+	description = "Eyeson JavaScript Library"
 	copyright = "eyeson GmbH"
 
 	# Repository
@@ -39,40 +41,40 @@ googleAnalytics = ""
     	accent  = "teal"
 
     [params.font]
-    	text = "Ubuntu"
+    	text = "Hubot Sans"
     	code = "Ubuntu Mono"
 
 [social]
 	twitter = "eyeson_team"
 	github  = "eyeson-team"
-	email   = "developers@eyeson.team"
+	email   = "developers@eyeson.com"
 
 
 [[menu.main]]
-	name   = "eyeson JavaScript Library"
+	name   = "Eyeson JavaScript Library"
 	url    = "/"
 	weight = 1
 
 [[menu.main]]
 	name   = "Overview"
 	url    = "overview/"
-	weight = 20
+	weight = 2
 
 [[menu.main]]
 	name   = "Events"
 	url    = "events/"
-	weight = 30
+	weight = 3
 
 [[menu.main]]
 	name   = "Utilities"
 	url    = "utilities/"
-	weight = 40
+	weight = 4
 
 # TODO: not ready + up-to-date
 # [[menu.main]]
 # 	name   = "Screen Capture"
 # 	url    = "screen-capture/"
-# 	weight = 40
+# 	weight = 5
 
 [blackfriday]
 	smartypants	= true

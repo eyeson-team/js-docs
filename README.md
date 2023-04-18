@@ -1,5 +1,5 @@
 
-# eyeson JavaScript library Documentation
+# Eyeson JavaScript Library Documentation
 
 Documentation for the [eyeson](https://www.eyeson.team) JavaScript library,
 hosted on GitHub pages at [eyeson-team.github.io/js-docs](https://eyeson-team.github.io/js-docs).

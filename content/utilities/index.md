@@ -1,9 +1,10 @@
 ---
 title: "Utilities"
 date: 2017-08-08T12:18:31+02:00
+weight: 3
 ---
 
-Use eyeson js library additional helpers and utilities to minimize the work
+Use Eyeson js library additional helpers and utilities to minimize the work
 needed to setup your own video conferencing interface.
 
 ## Logger
