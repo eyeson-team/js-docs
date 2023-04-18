@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>eyeson JS Library on eyeson JavaScript Library</title>
+    <title>Eyeson JS Library on Eyeson JavaScript Library</title>
     <link>https://eyeson-team.github.io/js-docs/</link>
-    <description>Recent content in eyeson JS Library on eyeson JavaScript Library</description>
+    <description>Recent content in Eyeson JS Library on Eyeson JavaScript Library</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 04 Aug 2017 15:55:33 +0200</lastBuildDate><atom:link href="https://eyeson-team.github.io/js-docs/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <pubDate>Tue, 08 Aug 2017 12:18:31 +0200</pubDate>
       
       <guid>https://eyeson-team.github.io/js-docs/utilities/</guid>
-      <description>Use eyeson js library additional helpers and utilities to minimize the work needed to setup your own video conferencing interface.
+      <description>Use Eyeson js library additional helpers and utilities to minimize the work needed to setup your own video conferencing interface.
 Logger Collect and manage development, debug, and error messages in one place.
 import { Logger } from &#39;eyeson&#39;; Logger.error(msg); // output error Logger.warn(msg); // output warning Logger.log(msg); // output log Logger.debug(msg); // output debug  Device Manager Manage audio and video device settings.
 Note: Always make sure to call storeConstraints after devices are changed, so that a following start_stream will actually use them.</description>
@@ -25,9 +25,9 @@ Note: Always make sure to call storeConstraints after devices are changed, so th
       <pubDate>Fri, 04 Aug 2017 16:32:40 +0200</pubDate>
       
       <guid>https://eyeson-team.github.io/js-docs/overview/</guid>
-      <description>The library is globally available via eyeson and lets you connect to any eyeson room.
+      <description>The library is globally available via Eyeson and lets you connect to any Eyeson room.
 Public Interface Two of the most common things you want to do with the library are:
- Let a user join a room Respond to things happening inside the room  In order to receive eyeson room events register a listener using the onEvent method provided. Remember to register a handler before starting a room otherwise you might miss some initial events.</description>
+ Let a user join a room Respond to things happening inside the room  In order to receive Eyeson room events register a listener using the onEvent method provided. Remember to register a handler before starting a room otherwise you might miss some initial events.</description>
     </item>
     
     <item>
@@ -36,9 +36,9 @@ Public Interface Two of the most common things you want to do with the library a
       <pubDate>Fri, 04 Aug 2017 16:29:43 +0200</pubDate>
       
       <guid>https://eyeson-team.github.io/js-docs/events/</guid>
-      <description>Events are the core data construct provided by the eyeson library. Most interactions with the room will be processed through events. The identifying attribute of an event is its type. When listening for events the most common thing you want to do is to respond to an event, commonly distinguished by conditionals, a switch statement or a factory.
+      <description>Events are the core data construct provided by the Eyeson library. Most interactions with the room will be processed through events. The identifying attribute of an event is its type. When listening for events the most common thing you want to do is to respond to an event, commonly distinguished by conditionals, a switch statement or a factory.
 Note
-eyeson js library will handle some additional events for you in order to provide a higher level abstraction and for ease of use you will not receive those events.</description>
+Eyeson js library will handle some additional events for you in order to provide a higher level abstraction and for ease of use you will not receive those events.</description>
     </item>
     
   </channel>
