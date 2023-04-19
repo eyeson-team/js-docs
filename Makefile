@@ -10,7 +10,7 @@ setup:
 
 build:
 	$(CMD) --baseUrl="https://eyeson-team.github.io/js-docs" && \
-		git ci -m "Public build `date -u`" public
+		git commit -m "Public build `date -u`" public
 
 deploy:
 	git push origin main && git subtree push --prefix public origin gh-pages
