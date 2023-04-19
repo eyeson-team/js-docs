@@ -20,17 +20,6 @@ Note: Always make sure to call storeConstraints after devices are changed, so th
     </item>
     
     <item>
-      <title>Overview</title>
-      <link>https://eyeson-team.github.io/js-docs/overview/</link>
-      <pubDate>Fri, 04 Aug 2017 16:32:40 +0200</pubDate>
-      
-      <guid>https://eyeson-team.github.io/js-docs/overview/</guid>
-      <description>The library is globally available via Eyeson and lets you connect to any Eyeson room.
-Public Interface Two of the most common things you want to do with the library are:
- Let a user join a room Respond to things happening inside the room  In order to receive Eyeson room events register a listener using the onEvent method provided. Remember to register a handler before starting a room otherwise you might miss some initial events.</description>
-    </item>
-    
-    <item>
       <title>Events</title>
       <link>https://eyeson-team.github.io/js-docs/events/</link>
       <pubDate>Fri, 04 Aug 2017 16:29:43 +0200</pubDate>
@@ -39,6 +28,17 @@ Public Interface Two of the most common things you want to do with the library a
       <description>Events are the core data construct provided by the Eyeson library. Most interactions with the room will be processed through events. The identifying attribute of an event is its type. When listening for events the most common thing you want to do is to respond to an event, commonly distinguished by conditionals, a switch statement or a factory.
 Note
 Eyeson js library will handle some additional events for you in order to provide a higher level abstraction and for ease of use you will not receive those events.</description>
+    </item>
+    
+    <item>
+      <title>Overview</title>
+      <link>https://eyeson-team.github.io/js-docs/overview/</link>
+      <pubDate>Fri, 04 Aug 2017 16:16:40 +0200</pubDate>
+      
+      <guid>https://eyeson-team.github.io/js-docs/overview/</guid>
+      <description>The library is globally available via eyeson and lets you connect to any Eyeson room.
+Public Interface Two of the most common things you want to do with the library are:
+ Let a user join a room Respond to things happening inside the room  In order to receive Eyeson room events register a listener using the onEvent method provided. Remember to register a handler before starting a room otherwise you might miss some initial events.</description>
     </item>
     
   </channel>
