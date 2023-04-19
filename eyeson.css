@@ -24,7 +24,7 @@ body, .header {
   background-color: #000 !important;
 }
 
-.footer, th {
+.footer, th, .admonition, .palette-accent-teal .repo a {
     background-color: var(--clr-primary) !important;
 }
 
@@ -48,14 +48,14 @@ h2, h4, h5 {
     font-size: 16px;
 }
 
-.palette-primary-grey .drawer .anchor a {
-    border-left: 2px solid var(--clr-primary) !important;
+.palette-primary-deep-purple .drawer .anchor a {
+    border-left: 2px solid var(--clr-primary);
 }
 
-.palette-primary-grey .article a {
+.palette-primary-deep-purple .drawer .toc a.current, .palette-primary-deep-purple .drawer .toc a:focus, .palette-primary-deep-purple .drawer .toc a:hover, .palette-primary-deep-purple .article a, .palette-primary-deep-purple .article code, .palette-primary-deep-purple .article h1, .palette-primary-deep-purple .article h2 {
     color: var(--clr-primary);
 }
 
-.palette-accent-light-blue .article a:focus, .palette-accent-light-blue .article a:hover {
+.palette-primary-deep-purple .article a:focus, .palette-primary-deep-purple .article a:hover {
     color: var(--clr-primary-dk);
 }
