@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eyeson JavaScript library</title>
+    <link rel="icon" href="images/favicon.ico" />
+<style>
+:root {
+    --clr-primary: #6b0fe8;
+    --clr-primary-lt: #a46ff7;
+    --clr-primary-dk: #520cb3;
+}
+
+@font-face {
+  font-family: 'Hubot Sans';
+  src: 
+    url('./fonts/Hubot-Sans.woff2') format('woff2 supports variations'),
+    url('./fonts/Hubot-Sans.woff2') format('woff2-variations'),
+    url('./fonts/Hubot-Sans.woff') format('woff');
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+  font-display: swap;
+  
+}
+
+body {
+    font-family: "Hubot Sans", Helvetica, Arial, sans-serif;
+    color: #333;
+    background: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+}
+
+a {
+    color: var(--clr-primary);
+}
+a:visited {
+    color: var(--clr-primary-lt);
+}
+header {
+    color: #fff;
+    background: #000;
+    padding: 1rem 2rem;
+    text-align: left;
+    margin-bottom: 4rem;
+    box-shadow: 0 1.5px 3px rgba(0,0,0,.24), 0 3px 8px rgba(0,0,0,.05);
+}
+header h1 {
+    font-size: 1.5rem;
+}
+</style>
+</head>
+<body>
+    <header>
+        <h1>Eyeson JS library</h1>
+    </header>
+
+    <p><img src="images/logo.svg" alt="Eyeson logo" width="50" height="50" /></p>
+
+    <p>&nbsp;</p>
+
+    <p>This documentation has moved to <a href="https://docs.eyeson.com/docs/js/intro/">https://docs.eyeson.com/docs/js/intro/</a></p>
+
+    <div id="redirect"></div>
+
+<script>
+let _countdown = 5;
+const init = () => {
+    document.querySelector('#redirect').innerHTML = '<p>Please wait <span id="countdown">5</span> seconds to be automatically redirected&hellip;</p>';
+    setTimeout(redirect, 1000);
+};
+
+const redirect = () => {
+    _countdown--;
+    document.querySelector('#countdown').textContent = _countdown;
+    if (_countdown === 0) {
+        location.assign('https://docs.eyeson.com/docs/js/intro/');
+    } else {
+        setTimeout(redirect, 1000);
+    }
+};
+
+init();
+</script>
+</body>
+</html>
