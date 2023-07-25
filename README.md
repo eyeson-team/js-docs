@@ -1,17 +1,10 @@
-
 # Eyeson JavaScript Library Documentation
 
-Documentation for the [eyeson](https://www.eyeson.team) JavaScript library,
-hosted on GitHub pages at [eyeson-team.github.io/js-docs](https://eyeson-team.github.io/js-docs).
+Documentation for the [eyeson](https://www.eyeson.com) JavaScript library.
 
-## Usage
+**:construction: :rotating_light: Attention! This documentation has moved to https://docs.eyeson.com/docs/js/intro/**
 
-```sh
-$ make setup # setup required hugo theme
-$ make watch # start static site generator dev server
-$ make       # build and deploy documentation updates
-```
+## Issues
 
-## Dependencies
-
-- [Hugo](https://gohugo.io/)
+Github issues are still in use. If you have any issue, feel free to open a new ticket  
+https://github.com/eyeson-team/js-docs/issues/
